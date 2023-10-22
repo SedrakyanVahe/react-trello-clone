@@ -1,0 +1,97 @@
+.header__title {
+  font-size: 24px;
+}
+
+.boards__title {
+  font-size: 20px;
+  margin-bottom: 20px;
+  padding: 12px;
+  border-bottom: 1px solid black;
+}
+
+.board {
+  background-color: #f0f0f0;
+  padding: 20px;
+  border-radius: 5px;
+  margin: 10px 0;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: space-between;
+}
+
+.board__title {
+  font-size: 18px;
+  margin: 0;
+  color: #333;
+
+  &:hover {
+    border-bottom: 1px solid black;
+  }
+}
+
+.board-content__title {
+  font-size: 20px;
+  margin-bottom: 20px;
+  padding: 12px;
+  border-bottom: 1px solid black;
+}
+
+.lists {
+  display: flex;
+}
+
+.list {
+  flex: 1;
+  background-color: #f0f0f0;
+  padding: 20px;
+  border-radius: 5px;
+  margin: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.list__title {
+  font-size: 18px;
+  margin: 0;
+  color: #333;
+}
+
+.list__title:hover {
+  border-bottom: 1px solid $color-grey;
+  padding-bottom: 4px;
+}
+
+.card {
+  background-color: #fff;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin: 10px 0;
+}
+
+.card__text {
+  font-size: 16px;
+  margin: 0;
+  color: #333;
+}
+
+@media (max-width: 768px) {
+  .boards__title {
+    font-size: 18px;
+  }
+  .board__title {
+    font-size: 16px;
+  }
+
+  .header__title {
+    font-size: 20px;
+  }
+  .board-content__title {
+    font-size: 18px;
+  }
+  .list__title {
+    font-size: 16px;
+  }
+  .card__text {
+    font-size: 14px;
+  }
+}

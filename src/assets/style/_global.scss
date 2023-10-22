@@ -14,9 +14,14 @@ body {
   padding-top: 90px;
 }
 
+.container {
+  width: 80%;
+  margin: 0 auto;
+}
+
 .btn {
   background-color: $color-blue;
-  border-radius: 20px;
+  border-radius: 10px;
   padding: 10px 25px;
   color: $color-white;
   box-shadow: 0px 18px 13px -6px rgba(0, 0, 0, 0.2);
@@ -33,33 +38,41 @@ body {
   color: $color-white;
 }
 
-.btn--revert {
+.btn__revert {
   background-color: transparent;
   color: $color-grey;
   box-shadow: none;
   border: 1px solid #c9d9e9;
 }
 
-.btn--revert:hover {
+.btn__revert:hover {
   background-color: transparent;
   color: $color-dark-blue;
   box-shadow: none;
   border: 1px solid $color-grey;
 }
 
-.btn--width {
+.btn__width {
   width: 120px;
 }
 
-.btn--white {
+.btn__white {
   background-color: $color-white;
   border: 1px solid #ededed;
   color: $color-grey;
 }
 
-.btn--white:hover {
+.btn__white:hover {
   background-color: $color-white;
   color: $color-grey;
+}
+
+.btn__red {
+  background-color: $color-red;
+
+  &:hover {
+    background-color: red;
+  }
 }
 
 .site {
@@ -84,7 +97,7 @@ body {
   display: inline-block;
   width: 77%;
 }
-.site__box-link .btn--revert {
+.site__box-link .btn__revert {
   margin-left: 15px;
 }
 
@@ -117,7 +130,7 @@ body {
     font-size: 12px;
     padding: 8px 8px;
   }
-  .btn--width {
+  .btn__width {
     width: 100px;
   }
 }

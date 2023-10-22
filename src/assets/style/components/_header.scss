@@ -1,5 +1,6 @@
 .header {
   padding: 30px 25px;
+  border-bottom: 1px solid $color-grey;
 }
 
 .header__elenco {
@@ -92,8 +93,8 @@
     border-top: 1px solid #ededed;
   }
 
-  .header .btn--white,
-  .header .btn--white:hover {
+  .header .btn__white,
+  .header .btn__white:hover {
     padding: 0;
     border: 0;
     box-shadow: none;

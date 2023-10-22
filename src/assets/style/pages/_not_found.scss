@@ -1,0 +1,18 @@
+.not_found {
+  padding: 4rem 2rem;
+  text-align: center;
+}
+
+.not_found .not_found_error_code {
+  font-size: 150px;
+  color: #d72516;
+  text-shadow: 1px 1px 1px $color-grey, 2px 2px 1px $color-grey, 3px 3px 1px $color-grey, 4px 4px 1px $color-grey, 5px 5px 1px $color-grey,
+    6px 6px 1px $color-grey, 7px 7px 1px $color-grey, 8px 8px 1px $color-grey, 25px 25px 8px rgba(0, 0, 0, 0.2);
+}
+
+.not_found_message {
+  margin: 2rem 0;
+  font-size: 20px;
+  font-weight: 600;
+  color: #444;
+}
