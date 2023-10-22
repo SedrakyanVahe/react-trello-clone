@@ -18,12 +18,12 @@ export const Board = () => {
     dispatch(getCurrentBoardLists(id))
   }, [dispatch, id])
 
-  const handleAddList = (listName) => {
-    dispatch(addList({ id: Date.now(), title: listName }))
+  const handleAddList = (listTitle) => {
+    dispatch(addList({ id: Date.now(), title: listTitle }))
   }
 
-  const handleUpdateListName = (listName) => {
-    dispatch(updateListName({ id: id, title: listName }))
+  const handleUpdateListName = (listTitle) => {
+    dispatch(updateListName({ id: id, title: listTitle }))
   }
 
   return (
@@ -31,14 +31,15 @@ export const Board = () => {
       <section className='board-content'>
         <div className='container board-content__container'>
           <h2 className='board-content__title'>{board?.title}</h2>
-          <button className='btn' onClick={() => setModalOpen(true)}>
-            +
-          </button>
-          <div className='lists'>
+          <section className='lists-container'>
             {lists.map((list) => (
-              <List key={list.id} title={list.title} onUpdateListName={handleUpdateListName} />
+              <List key={list.id} listId={list.id} title={list.title} onUpdateListName={handleUpdateListName} />
             ))}
-          </div>
+
+            <button className='add-list-btn btn' onClick={() => setModalOpen(true)}>
+              Add a list
+            </button>
+          </section>
         </div>
 
         {isModalOpen && <Modal resource={'List'} onClose={() => setModalOpen(false)} onAddResource={handleAddList} />}

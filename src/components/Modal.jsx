@@ -29,7 +29,7 @@ export const Modal = ({ resource, onClose, onAddResource }) => {
         </div>
         <div className='modal-footer'>
           <button className='btn' onClick={handleAddClick}>
-            Add {resource}
+            Save
           </button>
         </div>
       </div>

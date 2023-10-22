@@ -9,8 +9,8 @@ export const Boards = () => {
   const [isModalOpen, setModalOpen] = useState(false)
   const dispatch = useDispatch()
 
-  const handleAddBoard = (boardName) => {
-    dispatch(addBoard({ id: Date.now(), title: boardName }))
+  const handleAddBoard = (boardTitle) => {
+    dispatch(addBoard({ id: Date.now(), title: boardTitle }))
   }
 
   const handleDeleteBoard = (boardId) => {
@@ -25,7 +25,7 @@ export const Boards = () => {
         <div className='container boards__container'>
           <h2 className='boards__title'>Boards</h2>
           <button className='btn' onClick={() => setModalOpen(true)}>
-            +
+            Add board
           </button>
           {boards.map((board) => (
             <div key={board.id} className='board'>

@@ -1,6 +1,5 @@
 .header {
   padding: 30px 25px;
-  border-bottom: 1px solid $color-grey;
 }
 
 .header__elenco {
@@ -90,7 +89,6 @@
   .header__el {
     display: block;
     padding: 10px 20px;
-    border-top: 1px solid #ededed;
   }
 
   .header .btn__white,
@@ -100,9 +98,5 @@
     box-shadow: none;
     color: #fff;
     background-color: transparent;
-  }
-
-  .header__el--blue {
-    background-color: $color-blue;
   }
 }

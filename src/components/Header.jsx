@@ -6,9 +6,11 @@ export const Header = () => {
     <>
       <header className='header'>
         <div className='container header__container'>
-          <div className='header__logo'>
-            <h1 className='header__title'>Trello</h1>
-          </div>
+          <Link to={'/'} className='header__link'>
+            <div className='header__logo'>
+              <h1 className='header__title'>Trello</h1>
+            </div>
+          </Link>
 
           <label htmlFor='menu-toggle' className='mobile-menu-icon'>
             <div className='bar bar--1'></div>
@@ -26,11 +28,6 @@ export const Header = () => {
                 <li className='header__el'>
                   <Link to={'/boards'} className='header__link'>
                     Boards
-                  </Link>
-                </li>
-                <li className='header__el header__el--blue'>
-                  <Link href='' className='btn btn__white'>
-                    Sign In →
                   </Link>
                 </li>
               </ul>

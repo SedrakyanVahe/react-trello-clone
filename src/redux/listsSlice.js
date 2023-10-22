@@ -59,7 +59,7 @@ const listsSlice = createSlice({
       const list = state.listsList.find((list) => list.id == action.payload.id)
 
       if (!!list.id) {
-        list.name = action.payload.title
+        list.title = action.payload.title
       }
     },
   },

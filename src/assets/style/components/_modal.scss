@@ -47,15 +47,41 @@ label {
   margin-bottom: 5px;
 }
 
-input {
+input,
+textarea {
   width: 100%;
   padding: 10px;
-  border: 1px solid #ccc;
   border-radius: 10px;
 }
 
-input:focus {
+input:focus,
+textarea:focus {
   border: 1px solid $color-blue;
+}
+
+textarea {
+  height: 200px;
+}
+
+.modal-resource-title {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #333;
+  padding: 1rem;
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.modal-resource-description {
+  font-size: 1rem;
+  color: #333;
+  padding: 1rem;
+
+  &:hover {
+    cursor: pointer;
+  }
 }
 
 .modal-footer {
