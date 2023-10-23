@@ -2,33 +2,33 @@
   padding: 30px 25px;
 }
 
-.header__elenco {
+.header_elenco {
   padding: 0;
   margin: 0;
   list-style: none;
 }
 
-.header__menu {
+.header_menu {
   float: right;
 }
 
-.header__el {
+.header_el {
   padding: 0 25px;
   display: inline-block;
 }
 
-.header__img {
+.header_img {
   display: inline-block;
   vertical-align: middle;
 }
 
-.header__logo,
-.header__menu {
+.header_logo,
+.header_menu {
   display: inline-block;
   vertical-align: middle;
 }
 
-.header__title {
+.header_title {
   font-size: 18px;
   margin: 0;
   margin-left: 10px;
@@ -37,16 +37,16 @@
   vertical-align: middle;
 }
 
-.header__light {
+.header_light {
   color: $color-grey;
 }
 
-.header__link {
+.header_link {
   color: $color-dark-blue;
   font-size: 14px;
 }
 
-.header__link:hover {
+.header_link:hover {
   text-decoration: none;
   color: $color-blue;
 }
@@ -62,12 +62,12 @@
     margin-top: 10px;
   }
 
-  .header__container {
+  .header_container {
     width: 100%;
     padding: 0;
   }
 
-  .header__menu {
+  .header_menu {
     width: 100%;
   }
 
@@ -82,17 +82,17 @@
     z-index: 4;
   }
 
-  .header__logo {
+  .header_logo {
     padding: 12px 20px 12px 20px;
   }
 
-  .header__el {
+  .header_el {
     display: block;
     padding: 10px 20px;
   }
 
-  .header .btn__white,
-  .header .btn__white:hover {
+  .header .btn_white,
+  .header .btn_white:hover {
     padding: 0;
     border: 0;
     box-shadow: none;

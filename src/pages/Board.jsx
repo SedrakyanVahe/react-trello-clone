@@ -29,14 +29,14 @@ export const Board = () => {
   return (
     <>
       <section className='board-content'>
-        <div className='container board-content__container'>
-          <h2 className='board-content__title'>{board?.title}</h2>
-          <section className='lists-container'>
+        <div className='container board-content_container'>
+          <h2 className='board_content_title'>{board?.title}</h2>
+          <section className='lists_container'>
             {lists.map((list) => (
               <List key={list.id} listId={list.id} title={list.title} onUpdateListName={handleUpdateListName} />
             ))}
 
-            <button className='add-list-btn btn' onClick={() => setModalOpen(true)}>
+            <button className='add_list_btn btn' onClick={() => setModalOpen(true)}>
               Add a list
             </button>
           </section>

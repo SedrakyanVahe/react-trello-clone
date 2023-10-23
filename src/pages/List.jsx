@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { Card } from './Card'
 import { useDispatch, useSelector } from 'react-redux'
 import { addCard } from '../redux/cardsSlice'
@@ -9,7 +9,6 @@ export const List = ({ listId, title, onUpdateListName }) => {
   const [listTitle, setListTitle] = useState(title)
   const [isModalOpen, setModalOpen] = useState(false)
   const dispatch = useDispatch()
-  let cards = []
 
   const handleTitleClick = () => {
     setIsEditing(true)
@@ -24,15 +23,12 @@ export const List = ({ listId, title, onUpdateListName }) => {
     setListTitle(e.target.value)
   }
 
-  useSelector((state) => {
-    cards = state.cards.cardsList.filter((card) => card.listId == listId)
-  })
+  const { cardsList } = useSelector((state) => state.cards)
+  const cards = cardsList.filter((card) => card.listId == listId)
 
   const handleAddCard = (cardTitle) => {
     dispatch(addCard({ id: Date.now(), listId: listId, title: cardTitle }))
   }
-
-  console.log('cards : ', cards)
 
   return (
     <>
@@ -40,18 +36,18 @@ export const List = ({ listId, title, onUpdateListName }) => {
         {isEditing ? (
           <input type='text' value={listTitle} onChange={handleTitleChange} onBlur={handleTitleBlur} autoFocus />
         ) : (
-          <h3 className='list-title' onClick={handleTitleClick}>
+          <h3 className='list_title' onClick={handleTitleClick}>
             {listTitle}
           </h3>
         )}
 
-        <ul className='list-items'>
+        <ul className='list_items'>
           {cards.map((card) => (
             <Card key={card.id} listId={card.listId} cardId={card.id} title={card.title} description={card.description} />
           ))}
         </ul>
 
-        <button className='add-card-btn' onClick={() => setModalOpen(true)}>
+        <button className='add_card_btn' onClick={() => setModalOpen(true)}>
           Add a card
         </button>
         {isModalOpen && <Modal resource={'List'} onClose={() => setModalOpen(false)} onAddResource={handleAddCard} />}

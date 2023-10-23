@@ -10,7 +10,7 @@ body {
   position: relative;
 }
 
-.sect--padding-top {
+.sect_padding_top {
   padding-top: 40px;
 }
 
@@ -38,36 +38,36 @@ body {
   color: $color-white;
 }
 
-.btn__revert {
+.btn_revert {
   background-color: transparent;
   color: $color-grey;
   box-shadow: none;
   border: 1px solid #c9d9e9;
 }
 
-.btn__revert:hover {
+.btn_revert:hover {
   background-color: transparent;
   color: $color-dark-blue;
   box-shadow: none;
   border: 1px solid $color-grey;
 }
 
-.btn__width {
+.btn_width {
   width: 120px;
 }
 
-.btn__white {
+.btn_white {
   background-color: $color-white;
   border: 1px solid #ededed;
   color: $color-grey;
 }
 
-.btn__white:hover {
+.btn_white:hover {
   background-color: $color-white;
   color: $color-grey;
 }
 
-.btn__red {
+.btn_red {
   background-color: $color-red;
 
   &:hover {
@@ -79,30 +79,30 @@ body {
   text-align: center;
 }
 
-.site__title {
+.site_title {
   font-size: 30px;
   margin: 0;
   text-align: center;
 }
 
-.site__subtitle {
+.site_subtitle {
   font-size: 22px;
   color: $color-grey;
   margin: 15px 0 40px 0;
   text-align: center;
 }
 
-.site__img {
+.site_img {
   margin-top: 50px;
   display: inline-block;
   width: 77%;
 }
-.site__box-link .btn__revert {
+.site_box-link .btn_revert {
   margin-left: 15px;
 }
 
 @media screen and (max-width: 767px) {
-  .site__img {
+  .site_img {
     width: 100%;
   }
 }
@@ -111,18 +111,18 @@ body {
   .sect {
     padding: 20px 0;
   }
-  .sect--padding-top {
+  .sect_padding_top {
     padding-top: 80px;
   }
 
-  .site__title {
+  .site_title {
     font-size: 24px;
   }
-  .site__subtitle {
+  .site_subtitle {
     font-size: 18px;
     margin: 10px 0 20px 0;
   }
-  .site__img {
+  .site_img {
     margin-top: 30px;
   }
 
@@ -130,7 +130,7 @@ body {
     font-size: 12px;
     padding: 8px 8px;
   }
-  .btn__width {
+  .btn_width {
     width: 100px;
   }
 }

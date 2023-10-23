@@ -14,13 +14,13 @@ export const Card = ({ cardId, listId, title, description }) => {
 
   return (
     <>
-      <li onClick={() => setCardModalOpen(true)} className='list__item'>
-        <span className='card__tag card__tag--browser'>Browser</span>
-        <h6 className='card__title'>{title}</h6>
-        <ol className='card__actions'>
-          <ol className='card__avatars'>
-            <li className='card__avatars--item'>
-              <img src={avatarImage} alt='avatar' className='avatar__image' />
+      <li onClick={() => setCardModalOpen(true)} className='list_item'>
+        <span className='card_tag card_tag_browser'>Browser</span>
+        <h6 className='card_title'>{title}</h6>
+        <ol className='card_actions'>
+          <ol className='card_avatars'>
+            <li className='card_avatars_item'>
+              <img src={avatarImage} alt='avatar' className='avatar_image' />
             </li>
           </ol>
         </ol>

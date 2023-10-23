@@ -6,7 +6,7 @@ export const MainLayout = () => {
   return (
     <>
       <Header />
-      <div className='sect sect--padding-top'>
+      <div className='sect sect_padding_top'>
         <div className='container'>
           <div className='col-md-12'>
             <Outlet />

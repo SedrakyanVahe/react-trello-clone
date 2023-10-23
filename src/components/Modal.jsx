@@ -25,7 +25,7 @@ export const Modal = ({ resource, onClose, onAddResource }) => {
         </div>
         <div className='modal-content'>
           <label htmlFor='resource'> Name: </label>
-          <input type='text' id='resource' value={resourceName} onChange={handleNameChange} />
+          <input type='text' id='resource' value={resourceName} onChange={handleNameChange} autoFocus />
         </div>
         <div className='modal-footer'>
           <button className='btn' onClick={handleAddClick}>

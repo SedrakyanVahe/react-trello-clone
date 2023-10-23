@@ -28,7 +28,6 @@ const cardsSlice = createSlice({
     },
 
     updateCard: (state, action) => {
-      console.log(action)
       const card = state.cardsList.find((card) => card.id == action.payload.id)
 
       if (!!card.id) {

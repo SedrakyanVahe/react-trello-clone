@@ -1,9 +1,9 @@
-.header__title {
+.header_title {
   font-size: 24px;
 }
 
 // BOARD START
-.boards__title {
+.boards_title {
   font-size: 20px;
   margin-bottom: 20px;
   padding: 12px;
@@ -20,7 +20,7 @@
   justify-content: space-between;
 }
 
-.board__title {
+.board_title {
   font-size: 18px;
   margin: 0;
   color: #333;
@@ -30,7 +30,7 @@
   }
 }
 
-.board-content__title {
+.board_content_title {
   font-size: 20px;
   margin-bottom: 20px;
   padding: 12px;
@@ -39,15 +39,15 @@
 // BOARD END
 
 // LIST START
-.lists-container::-webkit-scrollbar {
+.lists_container::-webkit-scrollbar {
   height: 1rem;
 }
 
-.lists-container::-webkit-scrollbar-thumb {
+.lists_container::-webkit-scrollbar-thumb {
   background-color: #e2e4e6;
 }
 
-.lists-container {
+.lists_container {
   display: flex;
   align-items: start;
   padding: 0 0.8rem 0.8rem;
@@ -69,14 +69,14 @@
   margin-right: 0;
 }
 
-.list-title {
+.list_title {
   font-size: 1.4rem;
   font-weight: 700;
   color: #333;
   padding: 1rem;
 }
 
-.list-items {
+.list_items {
   flex: 1;
   display: flex;
   flex-direction: column;
@@ -85,16 +85,16 @@
   overflow-y: auto;
 }
 
-.list-items::-webkit-scrollbar {
+.list_items::-webkit-scrollbar {
   width: 1.6rem;
 }
 
-.list-items::-webkit-scrollbar-thumb {
+.list_items::-webkit-scrollbar-thumb {
   background-color: #c4c9cc;
   border-right: 0.6rem solid #e2e4e6;
 }
 
-.list-items li {
+.list_items li {
   font-size: 1.4rem;
   font-weight: 400;
   line-height: 1.3;
@@ -108,15 +108,15 @@
   cursor: pointer;
 }
 
-.list-items li:last-of-type {
+.list_items li:last-of-type {
   margin-bottom: 0;
 }
 
-.list-items li:hover {
+.list_items li:hover {
   background-color: #eee;
 }
 
-.add-card-btn {
+.add_card_btn {
   display: block;
   font-size: 1.4rem;
   font-weight: 400;
@@ -126,13 +126,13 @@
   cursor: pointer;
 }
 
-.add-card-btn:hover {
+.add_card_btn:hover {
   background-color: #cdd2d4;
   color: #4d4d4d;
   text-decoration: underline;
 }
 
-.add-list-btn {
+.add_list_btn {
   flex: 0 0 27rem;
   display: block;
   font-size: 1.4rem;
@@ -146,25 +146,25 @@
   text-align: left;
 }
 
-.add-list-btn:hover {
+.add_list_btn:hover {
   background-color: #005485;
 }
 
-.add-card-btn::after,
-.add-list-btn::after {
+.add_card_btn::after,
+.add_list_btn::after {
   content: '...';
 }
 // LIST END
 
 // CARD START
-.list__item {
+.list_item {
   background-color: white;
   border-radius: 0.25rem;
   box-shadow: 0 1px 0 rgba(9, 45, 66, 0.25);
   padding: 0.5rem;
 }
 
-.card__tag {
+.card_tag {
   font-size: 0.75rem;
   padding: 0.1rem 0.5rem;
   border-radius: 10px;
@@ -174,60 +174,60 @@
   display: inline-block;
 }
 
-.card__image {
+.card_image {
   width: 100%;
   margin-bottom: 0.25rem;
 }
 
-.card__tag--design {
+.card_tag_design {
   background-color: #61bd4f;
 }
 
-.card__tag--browser {
+.card_tag_browser {
   background-color: #c377e0;
 }
 
-.card__tag--mobile {
+.card_tag_mobile {
   background-color: #f2d600;
 }
 
-.card__tag--high {
+.card_tag_high {
   background-color: #eb5a46;
 }
 
-.card__tag--low {
+.card_tag_low {
   background-color: #00c2e0;
 }
 
-.card__title {
+.card_title {
   color: #17394d;
   margin-bottom: 0.75rem;
 }
 
-.card__actions {
+.card_actions {
   display: flex;
   align-items: center;
 }
 
-.card__actions--wrapper i {
+.card_actions_wrapper i {
   color: #798d99;
   margin-right: 0.5rem;
 }
 
-.card__actions--text {
+.card_actions_text {
   color: #798d99;
   font-size: 0.8rem;
   margin-left: -0.25rem;
   margin-right: 0.5rem;
 }
 
-.card__avatars {
+.card_avatars {
   display: flex;
   flex: 1;
   justify-content: flex-end;
 }
 
-.card__avatars--item {
+.card_avatars_item {
   margin-left: 0.25rem;
   padding: 0 !important;
   border: none !important;
@@ -235,7 +235,7 @@
   height: 28px;
 }
 
-.avatar__image {
+.avatar_image {
   border-radius: 50%;
   width: 100%;
   height: 100%;
@@ -244,23 +244,23 @@
 // CARD END
 
 @media (max-width: 768px) {
-  .boards__title {
+  .boards_title {
     font-size: 18px;
   }
-  .board__title {
+  .board_title {
     font-size: 16px;
   }
 
-  .header__title {
+  .header_title {
     font-size: 20px;
   }
-  .board-content__title {
+  .board_content_title {
     font-size: 18px;
   }
-  .list__title {
+  .list_title {
     font-size: 16px;
   }
-  .card__text {
+  .card_text {
     font-size: 14px;
   }
 }
