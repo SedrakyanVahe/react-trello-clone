@@ -36,34 +36,34 @@ export const CardModal = ({ title, description, onClose, onUpdateCard }) => {
   }
 
   return (
-    <div className='modal-overlay'>
-      <div className='modal'>
-        <div className='modal-header'>
+    <div className='modal_overlay'>
+      <div className='modal card_modal'>
+        <div className='modal_header'>
           <h2>Update card</h2>
 
-          <button className='close-button' onClick={onClose}>
+          <button className='close_button' onClick={onClose}>
             &times;
           </button>
         </div>
-        <div className='modal-content'>
+        <div className='modal_content'>
           {isTitleEditing ? (
-            <input title='Name' type='text' value={cardTitle} onChange={handleTitleChange} onBlur={handleTitleBlur} autoFocus />
+            <input title='Name' className='modal_resource_title_input' cols="50" type='text' value={cardTitle} onChange={handleTitleChange} onBlur={handleTitleBlur} autoFocus />
           ) : (
-            <h3 title='Name' className='modal-resource-title' onClick={handleTitleClick}>
+            <h3 title='Name' className='modal_resource_title' onClick={handleTitleClick}>
               {cardTitle}
             </h3>
           )}
 
           {isDescEditing ? (
-            <textarea title='Description' type='text' value={cardDesc} onChange={handleDescChange} onBlur={handleDescBlur} autoFocus />
+            <textarea title='Description' type='text' placeholder='Add a more detailed description...' value={cardDesc} onChange={handleDescChange} onBlur={handleDescBlur} autoFocus />
           ) : (
-            <p title='Description' className='modal-resource-description' onClick={handleDescClick}>
-              {cardDesc}
+            <p title='Description' className='modal_resource_description' onClick={handleDescClick}>
+              {!!cardDesc ? cardDesc : 'Add a more detailed description...'}
             </p>
           )}
         </div>
 
-        <div className='modal-footer'>
+        <div className='modal_footer'>
           <button className='btn' onClick={handleSave}>
             Save
           </button>

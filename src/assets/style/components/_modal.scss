@@ -1,4 +1,4 @@
-.modal-overlay {
+.modal_overlay {
   position: fixed;
   top: 0;
   left: 0;
@@ -19,13 +19,13 @@
   padding: 20px;
 }
 
-.modal-header {
+.modal_header {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-.close-button {
+.close_button {
   cursor: pointer;
   background: none;
   border: none;
@@ -33,11 +33,11 @@
   color: #333;
 }
 
-.close-button:hover {
+.close_button:hover {
   color: $color-black;
 }
 
-.modal-content {
+.modal_content {
   margin-top: 10px;
 }
 
@@ -52,6 +52,7 @@ textarea {
   width: 100%;
   padding: 10px;
   border-radius: 10px;
+  resize: none;
 }
 
 input:focus,
@@ -63,42 +64,25 @@ textarea {
   height: 200px;
 }
 
-.modal-resource-title {
+.modal_resource_title, .modal_resource_title_input {
   font-size: 1.4rem;
   font-weight: 700;
   color: #333;
   padding: 1rem;
-
-  &:hover {
-    cursor: pointer;
-  }
 }
 
-.modal-resource-description {
+.modal_resource_description {
   font-size: 1rem;
   color: #333;
   padding: 1rem;
-
-  &:hover {
-    cursor: pointer;
-  }
 }
 
-.modal-footer {
+.modal_footer {
   display: flex;
   justify-content: flex-end;
   margin-top: 20px;
 }
 
-.add-button {
-  background-color: #0079bf;
-  color: #fff;
-  border: none;
-  border-radius: 5px;
-  padding: 8px 20px;
-  cursor: pointer;
-}
-
-.add-button:hover {
-  background-color: #005783;
+.card_modal {
+  width: 60%;
 }
