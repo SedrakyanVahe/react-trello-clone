@@ -55,8 +55,12 @@ const listsSlice = createSlice({
       state.currentBoardLists.push(action.payload)
     },
 
+    deleteList: (state, action) => {
+      state.currentBoardLists = state.currentBoardLists.filter((list) => list.id !== action.payload)
+    },
+
     updateListName: (state, action) => {
-      const list = state.listsList.find((list) => list.id == action.payload.id)
+      const list = state.listsList.find((list) => list.id == action.payload?.id)
 
       if (!!list.id) {
         list.title = action.payload.title
@@ -65,5 +69,5 @@ const listsSlice = createSlice({
   },
 })
 
-export const { getCurrentBoardLists, addList, updateListName } = listsSlice.actions
+export const { getCurrentBoardLists, addList, deleteList, updateListName } = listsSlice.actions
 export default listsSlice.reducer

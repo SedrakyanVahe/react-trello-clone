@@ -1,0 +1,84 @@
+.list_item {
+  background-color: white;
+  border-radius: 0.25rem;
+  box-shadow: 0 1px 0 rgba(9, 45, 66, 0.25);
+  padding: 0.5rem;
+}
+
+.card_tag {
+  font-size: 0.75rem;
+  padding: 0.1rem 0.5rem;
+  border-radius: 10px;
+  font-weight: 700;
+  color: white;
+  margin-bottom: 0.75rem;
+  display: inline-block;
+}
+
+.card_image {
+  width: 100%;
+  margin-bottom: 0.25rem;
+}
+
+.card_tag_design {
+  background-color: #61bd4f;
+}
+
+.card_tag_browser {
+  background-color: #c377e0;
+}
+
+.card_tag_mobile {
+  background-color: #f2d600;
+}
+
+.card_tag_high {
+  background-color: #eb5a46;
+}
+
+.card_tag_low {
+  background-color: #00c2e0;
+}
+
+.card_title {
+  color: #17394d;
+  margin-bottom: 0.75rem;
+}
+
+.card_actions {
+  display: flex;
+  align-items: center;
+}
+
+.card_actions_wrapper i {
+  color: #798d99;
+  margin-right: 0.5rem;
+}
+
+.card_actions_text {
+  color: #798d99;
+  font-size: 0.8rem;
+  margin-left: -0.25rem;
+  margin-right: 0.5rem;
+}
+
+.card_avatars {
+  display: flex;
+  flex: 1;
+  justify-content: flex-end;
+}
+
+.card_avatars_item {
+  margin-left: 0.25rem;
+  padding: 0 !important;
+  border: none !important;
+  width: 28px;
+  height: 28px;
+}
+
+.avatar_image {
+  border-radius: 50%;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}

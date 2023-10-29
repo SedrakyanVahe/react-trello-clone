@@ -1,0 +1,33 @@
+.dropdown {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  font-family: Arial, sans-serif;
+  border-radius: 10px;
+}
+
+.dropdown_options {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-top: none;
+  border-radius: 0 0 5px 5px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  max-height: 150px;
+  overflow-y: auto;
+  border-radius: 10px;
+}
+
+.dropdown_options li {
+  padding: 10px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.dropdown_options li:hover {
+  background-color: #f0f0f0;
+}

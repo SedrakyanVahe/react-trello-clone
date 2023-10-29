@@ -35,8 +35,12 @@ const cardsSlice = createSlice({
         card.description = action.payload.description
       }
     },
+
+    deleteListCards: (state, action) => {
+      state.cardsList = state.cardsList.filter((card) => card.listId !== action.payload)
+    },
   },
 })
 
-export const { addCard, updateCard } = cardsSlice.actions
+export const { addCard, updateCard, deleteListCards } = cardsSlice.actions
 export default cardsSlice.reducer
