@@ -12,7 +12,7 @@ body {
 }
 
 .sect_padding_top {
-  padding-top: 40px;
+  padding-top: 60px;
 }
 
 .container {
@@ -67,17 +67,6 @@ textarea {
   width: 120px;
 }
 
-.btn_white {
-  background-color: $color-white;
-  border: 1px solid #ededed;
-  color: $color-grey;
-}
-
-.btn_white:hover {
-  background-color: $color-white;
-  color: $color-grey;
-}
-
 .btn_red {
   background-color: $color-red;
 
@@ -129,10 +118,12 @@ textarea {
   .site_title {
     font-size: 24px;
   }
+
   .site_subtitle {
     font-size: 18px;
     margin: 10px 0 20px 0;
   }
+
   .site_img {
     margin-top: 30px;
   }
@@ -141,6 +132,7 @@ textarea {
     font-size: 12px;
     padding: 8px 8px;
   }
+
   .btn_width {
     width: 100px;
   }

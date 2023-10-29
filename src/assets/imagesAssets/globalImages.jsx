@@ -1,5 +1,3 @@
-export { default as BurgerIcon } from '../../assets/images/burger-icon.svg'
-export { default as CloseIcon } from '../../assets/images/close-icon.svg'
 export { default as homeImage } from '../../assets/images/home-image.png'
 export { default as avatarImage } from '../../assets/images/avatar.avif'
 export { default as threeDots } from '../../assets/images/three-dots.svg'

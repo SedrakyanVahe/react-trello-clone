@@ -1,5 +1,6 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
+import { avatarImage } from '../assets/imagesAssets/globalImages'
 
 export const Header = () => {
   return (
@@ -12,14 +13,9 @@ export const Header = () => {
             </div>
           </Link>
 
-          <label htmlFor='menu-toggle' className='mobile-menu-icon'>
-            <div className='bar bar_1'></div>
-            <div className='bar bar_2'></div>
-            <div className='bar bar_3'></div>
-          </label>
           <div className='header_menu'>
             <nav id='navbar' className='header_nav collapse'>
-              <ul className='header_elenco'>
+              <ul>
                 <li className='header_el'>
                   <Link to={'/'} className='header_link'>
                     Home
@@ -30,8 +26,41 @@ export const Header = () => {
                     Boards
                   </Link>
                 </li>
+                <li className='header_el'>
+                  <div className='myProfile'>
+                    <div className='avatar'>
+                      <img src={avatarImage} />
+                    </div>
+                  </div>
+                </li>
               </ul>
             </nav>
+          </div>
+
+          <div className='header_menu_mobile'>
+            <input id='menu_toggle' type='checkbox' />
+            <label className='menu_button_container' htmlFor='menu_toggle'>
+              <div className='menu_button'></div>
+            </label>
+            <ul className='menu'>
+              <li className='header_el'>
+                <Link to={'/'} className='header_link'>
+                  Home
+                </Link>
+              </li>
+              <li className='header_el'>
+                <Link to={'/boards'} className='header_link'>
+                  Boards
+                </Link>
+              </li>
+              <li className='header_el'>
+                <div className='myProfile'>
+                  <div className='avatar'>
+                    <img src={avatarImage} />
+                  </div>
+                </div>
+              </li>
+            </ul>
           </div>
         </div>
       </header>
