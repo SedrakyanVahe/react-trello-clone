@@ -40,8 +40,16 @@ const boardsSlice = createSlice({
         state.boardsList.splice(boardIndex, 1)
       }
     },
+
+    updateBoardTitle: (state, action) => {
+      const board = state.boardsList.find((board) => board.id == action.payload.id)
+
+      if (!!board.id) {
+        board.title = action.payload.title
+      }
+    },
   },
 })
 
-export const { showBoard, addBoard, deleteBoard } = boardsSlice.actions
+export const { showBoard, addBoard, deleteBoard, updateBoardTitle } = boardsSlice.actions
 export default boardsSlice.reducer

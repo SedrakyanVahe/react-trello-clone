@@ -24,10 +24,6 @@
   font-size: 18px;
   margin: 0;
   color: #333;
-
-  &:hover {
-    border-bottom: 1px solid black;
-  }
 }
 
 .board_content_title {
@@ -36,6 +32,13 @@
   padding: 12px;
   border-bottom: 1px solid black;
 }
+
+.board_actions {
+  display: flex;
+  gap: 5px;
+  flex-wrap: wrap;
+}
+
 // BOARD END
 
 // LIST START

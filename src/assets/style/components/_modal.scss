@@ -17,6 +17,11 @@
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
   width: 400px;
   padding: 20px;
+
+  input,
+  textarea {
+    width: 100%;
+  }
 }
 
 .modal_header {
@@ -47,14 +52,6 @@ label {
   margin-bottom: 5px;
 }
 
-input,
-textarea {
-  width: 100%;
-  padding: 10px;
-  border-radius: 10px;
-  resize: none;
-}
-
 input:focus,
 textarea:focus {
   border: 1px solid $color-blue;
@@ -64,7 +61,8 @@ textarea {
   height: 200px;
 }
 
-.modal_resource_title, .modal_resource_title_input {
+.modal_resource_title,
+.modal_resource_title_input {
   font-size: 1.4rem;
   font-weight: 700;
   color: #333;
