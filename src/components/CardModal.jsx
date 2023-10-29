@@ -1,10 +1,12 @@
 import React, { useState } from 'react'
+import { Dropdown } from './DropDown'
 
-export const CardModal = ({ title, description, onClose, onUpdateCard }) => {
+export const CardModal = ({ title, description, listId, lists, onClose, handleUpdateCard }) => {
   const [isTitleEditing, setIsTitleEditing] = useState(false)
   const [cardTitle, setCardTitle] = useState(title)
   const [isDescEditing, setIsDescEditing] = useState(false)
   const [cardDesc, setCardDesc] = useState(description)
+  const [cardListId, setCardListId] = useState(listId)
 
   const handleTitleClick = () => {
     setIsTitleEditing(true)
@@ -30,13 +32,24 @@ export const CardModal = ({ title, description, onClose, onUpdateCard }) => {
     setCardDesc(e.target.value)
   }
 
+  const handleListChange = (option) => {
+    const listId = lists[option]
+    setCardListId(listId)
+  }
+
   const handleSave = () => {
-    onUpdateCard(cardTitle, cardDesc)
+    handleUpdateCard(cardTitle, cardDesc, cardListId)
     onClose()
   }
 
+  const handleOverlayClick = (e) => {
+    if (e.target === e.currentTarget) {
+      onClose()
+    }
+  }
+
   return (
-    <div className='modal_overlay'>
+    <div className='modal_overlay' onClick={handleOverlayClick}>
       <div className='modal card_modal'>
         <div className='modal_header'>
           <h2>Update card</h2>
@@ -47,7 +60,17 @@ export const CardModal = ({ title, description, onClose, onUpdateCard }) => {
         </div>
         <div className='modal_content'>
           {isTitleEditing ? (
-            <input title='Name' className='modal_resource_title_input' cols="50" type='text' value={cardTitle} onChange={handleTitleChange} onBlur={handleTitleBlur} autoFocus />
+            <input
+              title='Name'
+              className='modal_resource_title_input'
+              cols='50'
+              type='text'
+              placeholder='Title'
+              value={cardTitle}
+              onChange={handleTitleChange}
+              onBlur={handleTitleBlur}
+              autoFocus
+            />
           ) : (
             <h3 title='Name' className='modal_resource_title' onClick={handleTitleClick}>
               {cardTitle}
@@ -55,12 +78,24 @@ export const CardModal = ({ title, description, onClose, onUpdateCard }) => {
           )}
 
           {isDescEditing ? (
-            <textarea title='Description' type='text' placeholder='Add a more detailed description...' value={cardDesc} onChange={handleDescChange} onBlur={handleDescBlur} autoFocus />
+            <textarea
+              title='Description'
+              type='text'
+              placeholder='Add a more detailed description...'
+              value={cardDesc}
+              onChange={handleDescChange}
+              onBlur={handleDescBlur}
+              autoFocus
+            />
           ) : (
             <p title='Description' className='modal_resource_description' onClick={handleDescClick}>
               {!!cardDesc ? cardDesc : 'Add a more detailed description...'}
             </p>
           )}
+
+          <div className='modal_resource_list' style={{ padding: '1rem' }}>
+            <Dropdown img='' title='Lists' options={Object.keys(lists)} onSelect={handleListChange} />
+          </div>
         </div>
 
         <div className='modal_footer'>

@@ -28,8 +28,8 @@ export const Board = () => {
 
   return (
     <>
-      <section className='board-content'>
-        <div className='container board-content_container'>
+      <section className='board_content'>
+        <div className='container board_content_container'>
           <h2 className='board_content_title'>{board?.title}</h2>
           <section className='lists_container'>
             {lists.map((list) => (

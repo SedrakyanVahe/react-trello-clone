@@ -4,8 +4,8 @@ import { useDispatch, useSelector } from 'react-redux'
 import { addCard, deleteListCards } from '../redux/cardsSlice'
 import { deleteList } from '../redux/listsSlice'
 import { Modal } from '../components/Modal'
-import { threeDots } from '../assets/imagesAssets/globalImages'
 import { Dropdown } from '../components/DropDown'
+import { threeDots } from '../assets/imagesAssets/globalImages'
 
 export const List = ({ listId, title, onUpdateListName }) => {
   const dispatch = useDispatch()
@@ -49,14 +49,14 @@ export const List = ({ listId, title, onUpdateListName }) => {
       <div className='list'>
         <div className='list_header'>
           {isEditing ? (
-            <input type='text' value={listTitle} onChange={handleTitleChange} onBlur={handleTitleBlur} autoFocus />
+            <input type='text' className='list_title_input' value={listTitle} onChange={handleTitleChange} onBlur={handleTitleBlur} autoFocus />
           ) : (
             <h3 className='list_title' onClick={handleTitleClick}>
               {listTitle}
             </h3>
           )}
 
-          <Dropdown img={threeDots} options={Object.keys(options)} onSelect={handleSelect} />
+          <Dropdown img={threeDots} title='' options={Object.keys(options)} onSelect={handleSelect} />
         </div>
 
         <ul className='list_items'>

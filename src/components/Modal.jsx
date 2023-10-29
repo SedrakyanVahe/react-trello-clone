@@ -21,8 +21,14 @@ export const Modal = ({ resource, onClose, onAddResource }) => {
     }
   }
 
+  const handleOverlayClick = (e) => {
+    if (e.target === e.currentTarget) {
+      onClose()
+    }
+  }
+
   return (
-    <div className='modal_overlay'>
+    <div className='modal_overlay' onClick={handleOverlayClick}>
       <div className='modal'>
         <div className='modal_header'>
           <h2>Add a New {resource}</h2>
@@ -31,7 +37,7 @@ export const Modal = ({ resource, onClose, onAddResource }) => {
           </button>
         </div>
         <div className='modal_content'>
-          <label htmlFor='resource'> Name: </label>
+          <label htmlFor='resource'> Title: </label>
           <input type='text' id='resource' value={resourceName} onChange={handleNameChange} onKeyDown={handleKeyPress} autoFocus />
         </div>
         <div className='modal_footer'>

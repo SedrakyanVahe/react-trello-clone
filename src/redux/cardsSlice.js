@@ -33,6 +33,7 @@ const cardsSlice = createSlice({
       if (!!card.id) {
         card.title = action.payload.title
         card.description = action.payload.description
+        card.listId = action.payload.listId
       }
     },
 
@@ -42,5 +43,5 @@ const cardsSlice = createSlice({
   },
 })
 
-export const { addCard, updateCard, deleteListCards } = cardsSlice.actions
+export const { addCard, updateCard, deleteListCards, changeList } = cardsSlice.actions
 export default cardsSlice.reducer
