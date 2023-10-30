@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Dropdown } from './DropDown'
+import { Dropdown } from './Dropdown'
 
 export const CardModal = ({ title, description, listId, lists, onClose, handleUpdateCard }) => {
   const [isTitleEditing, setIsTitleEditing] = useState(false)

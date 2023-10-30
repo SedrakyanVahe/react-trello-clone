@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { addCard, deleteListCards } from '../redux/cardsSlice'
 import { deleteList } from '../redux/listsSlice'
 import { Modal } from '../components/Modal'
-import { Dropdown } from '../components/DropDown'
+import { Dropdown } from '../components/Dropdown'
 import { threeDots } from '../assets/imagesAssets/globalImages'
 
 export const List = ({ listId, title, onUpdateListName }) => {
