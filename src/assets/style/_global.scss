@@ -137,3 +137,56 @@ textarea {
     width: 100px;
   }
 }
+
+.material_textfield {
+  position: relative;
+
+  label {
+    position: absolute;
+    font-size: 1rem;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: white;
+    color: $color-grey;
+    padding: 0 0.3rem;
+    margin: 0 0.5rem;
+    transition: 0.1s ease-out;
+    transform-origin: left top;
+    pointer-events: none;
+  }
+
+  input,
+  textarea {
+    font-size: 1rem;
+    outline: none;
+    border: 1px solid $color-grey;
+    border-radius: 5px;
+    padding: 1rem 0.7rem;
+    color: $color-grey;
+    transition: 0.1s ease-out;
+    border-radius: 10px;
+  }
+
+  textarea {
+    height: 200px;
+  }
+
+  input:focus,
+  textarea:focus {
+    border-color: $color-blue;
+  }
+
+  input:focus + label,
+  textarea:focus + label {
+    color: $color-blue;
+    top: 0;
+    transform: translateY(-50%) scale(0.9);
+  }
+
+  input:not(:placeholder-shown) + label,
+  textarea:not(:placeholder-shown) + label {
+    top: 0;
+    transform: translateY(-50%) scale(0.9);
+  }
+}

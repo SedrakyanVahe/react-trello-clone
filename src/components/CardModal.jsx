@@ -60,17 +60,19 @@ export const CardModal = ({ title, description, listId, lists, onClose, handleUp
         </div>
         <div className='modal_content'>
           {isTitleEditing ? (
-            <input
-              title='Name'
-              className='modal_resource_title_input'
-              cols='50'
-              type='text'
-              placeholder='Title'
-              value={cardTitle}
-              onChange={handleTitleChange}
-              onBlur={handleTitleBlur}
-              autoFocus
-            />
+            <div className='material_textfield'>
+              <input
+                title='Name'
+                className='modal_resource_title_input'
+                cols='50'
+                type='text'
+                value={cardTitle}
+                onChange={handleTitleChange}
+                onBlur={handleTitleBlur}
+                autoFocus
+              />
+              <label htmlFor='resource'>Title</label>
+            </div>
           ) : (
             <h3 title='Name' className='modal_resource_title' onClick={handleTitleClick}>
               {cardTitle}
@@ -78,15 +80,18 @@ export const CardModal = ({ title, description, listId, lists, onClose, handleUp
           )}
 
           {isDescEditing ? (
-            <textarea
-              title='Description'
-              type='text'
-              placeholder='Add a more detailed description...'
-              value={cardDesc}
-              onChange={handleDescChange}
-              onBlur={handleDescBlur}
-              autoFocus
-            />
+            <div className='material_textfield'>
+              <textarea
+                title=' '
+                type='text'
+                placeholder='Add a more detailed description...'
+                value={cardDesc}
+                onChange={handleDescChange}
+                onBlur={handleDescBlur}
+                autoFocus
+              />
+              <label htmlFor='resource'>Description</label>
+            </div>
           ) : (
             <p title='Description' className='modal_resource_description' onClick={handleDescClick}>
               {!!cardDesc ? cardDesc : 'Add a more detailed description...'}

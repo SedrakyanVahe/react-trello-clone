@@ -46,21 +46,6 @@
   margin-top: 10px;
 }
 
-label {
-  font-weight: bold;
-  display: block;
-  margin-bottom: 5px;
-}
-
-input:focus,
-textarea:focus {
-  border: 1px solid $color-blue;
-}
-
-textarea {
-  height: 200px;
-}
-
 .modal_resource_title,
 .modal_resource_title_input {
   font-size: 1.4rem;

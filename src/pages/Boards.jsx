@@ -54,17 +54,19 @@ export const Boards = () => {
           {boards.map((board) => (
             <div key={board.id} className='board'>
               {editingBoardId === board.id ? (
-                <>
+                <div className='material_textfield'>
                   <input
                     type='text'
                     className='board_title_input'
-                    placeholder='Title'
+                    placeholder=' '
                     value={boardTitle}
                     onChange={handleTitleChange}
                     onBlur={() => saveBoardTitle(board.id)}
                     autoFocus
                   />
-                </>
+
+                  <label htmlFor='resource'>Title</label>
+                </div>
               ) : (
                 <>
                   <h3 className='board_title' onClick={() => startEditingBoard(board.id, board.title)}>

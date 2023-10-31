@@ -49,7 +49,10 @@ export const List = ({ listId, title, onUpdateListName }) => {
       <div className='list'>
         <div className='list_header'>
           {isEditing ? (
-            <input type='text' className='list_title_input' value={listTitle} onChange={handleTitleChange} onBlur={handleTitleBlur} autoFocus />
+            <div className='material_textfield'>
+              <input type='text' className='list_title_input' value={listTitle} onChange={handleTitleChange} onBlur={handleTitleBlur} autoFocus />
+              <label htmlFor='resource'>Title</label>
+            </div>
           ) : (
             <h3 className='list_title' onClick={handleTitleClick}>
               {listTitle}
