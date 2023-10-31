@@ -3,6 +3,12 @@ import { Link } from 'react-router-dom'
 import { avatarImage } from '../assets/imagesAssets/globalImages'
 
 export const Header = () => {
+  const [menuOpen, setMenuOpen] = useState(false)
+
+  const toggleMenu = () => {
+    setMenuOpen(!menuOpen)
+  }
+
   return (
     <>
       <header className='header'>
@@ -38,17 +44,17 @@ export const Header = () => {
           </div>
 
           <div className='header_menu_mobile'>
-            <input id='menu_toggle' type='checkbox' />
+            <input id='menu_toggle' type='checkbox' checked={menuOpen} onChange={toggleMenu} />
             <label className='menu_button_container' htmlFor='menu_toggle'>
               <div className='menu_button'></div>
             </label>
             <ul className='menu'>
-              <li className='header_el'>
+              <li className='header_el' onClick={toggleMenu}>
                 <Link to={'/'} className='header_link'>
                   Home
                 </Link>
               </li>
-              <li className='header_el'>
+              <li className='header_el' onClick={toggleMenu}>
                 <Link to={'/boards'} className='header_link'>
                   Boards
                 </Link>
