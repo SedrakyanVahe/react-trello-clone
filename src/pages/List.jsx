@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { Card } from './Card'
 import { useDispatch, useSelector } from 'react-redux'
 import { addCard, deleteListCards } from '../redux/cardsSlice'
@@ -59,7 +59,7 @@ export const List = ({ listId, title, onUpdateListName }) => {
             </h3>
           )}
 
-          <Dropdown img={threeDots} title='' options={Object.keys(options)} onSelect={handleSelect} />
+          <Dropdown img={threeDots} title='' resource='actions' options={Object.keys(options)} onSelect={handleSelect} />
         </div>
 
         <ul className='list_items'>
@@ -71,7 +71,7 @@ export const List = ({ listId, title, onUpdateListName }) => {
         <button className='add_card_btn' onClick={() => setModalOpen(true)}>
           Add a card
         </button>
-        {isModalOpen && <Modal resource={'List'} onClose={() => setModalOpen(false)} onAddResource={handleAddCard} />}
+        {isModalOpen && <Modal resource={'List'} field='Title' onClose={() => setModalOpen(false)} onAddResource={handleAddCard} />}
       </div>
     </>
   )

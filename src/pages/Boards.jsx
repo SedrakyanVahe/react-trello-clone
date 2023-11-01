@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { addBoard, deleteBoard, updateBoardTitle } from '../redux/boardsSlice'
@@ -86,7 +86,7 @@ export const Boards = () => {
           ))}
         </div>
 
-        {isModalOpen && <Modal resource={'Board'} onClose={() => setModalOpen(false)} onAddResource={handleAddBoard} />}
+        {isModalOpen && <Modal resource={'Board'} field='Title' onClose={() => setModalOpen(false)} onAddResource={handleAddBoard} />}
       </section>
     </>
   )

@@ -6,6 +6,10 @@
   border-radius: 10px;
 }
 
+.dropdown_title:hover {
+  background: #e7e6e6;
+}
+
 .dropdown_options {
   position: absolute;
   top: 100%;
@@ -23,6 +27,13 @@
   width: 200px;
 }
 
+.dropdown_title {
+  display: block;
+  padding: 10px 25px;
+  border: 1px solid #00000069;
+  border-radius: 10px;
+}
+
 .dropdown_options li {
   padding: 10px;
   cursor: pointer;
@@ -31,4 +42,17 @@
 
 .dropdown_options li:hover {
   background-color: #f0f0f0;
+}
+
+// USERS
+.user_avatar {
+  width: 50px;
+  height: 50px;
+  border: 1px solid $color-grey;
+  border-radius: 50%;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
 }

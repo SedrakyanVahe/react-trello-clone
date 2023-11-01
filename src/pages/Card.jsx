@@ -1,5 +1,6 @@
-import React, { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import { transformObject } from '../helpers/helpers'
 import { avatarImage } from '../assets/imagesAssets/globalImages'
 import { CardModal } from '../components/CardModal'
 import { updateCard } from '../redux/cardsSlice'
@@ -8,11 +9,7 @@ export const Card = ({ cardId, listId, title, description }) => {
   const [isCardModalOpen, setCardModalOpen] = useState(false)
   const dispatch = useDispatch()
   const lists = useSelector((state) => state.lists.currentBoardLists)
-
-  const transformedObject = lists.reduce((result, item) => {
-    result[item.title] = item.id
-    return result
-  }, {})
+  const listsObject = transformObject(lists, 'lists')
 
   const handleUpdateCard = (cardTitle, cardDesc, cardListId) => {
     dispatch(updateCard({ id: cardId, listId: cardListId, title: cardTitle, description: cardDesc }))
@@ -37,7 +34,7 @@ export const Card = ({ cardId, listId, title, description }) => {
           title={title}
           description={description}
           listId={listId}
-          lists={transformedObject}
+          lists={listsObject}
           onClose={() => setCardModalOpen(false)}
           handleUpdateCard={handleUpdateCard}
         />

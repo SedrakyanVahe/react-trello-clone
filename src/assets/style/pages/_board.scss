@@ -134,6 +134,13 @@
   content: '...';
 }
 
+.board_users {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  gap: 5px;
+}
+
 @media (max-width: 768px) {
   .board_content_title {
     font-size: 18px;

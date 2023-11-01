@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { Dropdown } from './Dropdown'
 
 export const CardModal = ({ title, description, listId, lists, onClose, handleUpdateCard }) => {
@@ -99,7 +99,7 @@ export const CardModal = ({ title, description, listId, lists, onClose, handleUp
           )}
 
           <div className='modal_resource_list' style={{ padding: '1rem' }}>
-            <Dropdown img='' title='Lists' options={Object.keys(lists)} onSelect={handleListChange} />
+            <Dropdown img='' title='Lists' resource='lists' options={Object.keys(lists)} onSelect={handleListChange} />
           </div>
         </div>
 

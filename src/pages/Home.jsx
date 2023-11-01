@@ -1,4 +1,3 @@
-import React from 'react'
 import { homeImage } from '../assets/imagesAssets/globalImages'
 
 export const Home = () => {
