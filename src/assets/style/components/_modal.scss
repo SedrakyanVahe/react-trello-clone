@@ -69,3 +69,37 @@
 .card_modal {
   width: 60%;
 }
+
+.cardMembersTitle {
+  padding: 1rem;
+  font-weight: bold;
+}
+
+.card_members {
+  padding: 1rem;
+  display: flex;
+  justify-content: start;
+  gap: 5px;
+
+  ol {
+    display: flex;
+  }
+
+  .card_avatars_item {
+    width: 40px;
+    height: 40px;
+  }
+
+  .addMemberBtn {
+    width: 40px;
+    height: 40px;
+    font-weight: bold;
+    font-size: 25px;
+    border: 1px solid $color-grey;
+    border-radius: 50%;
+
+    &:hover {
+      background: rgb(245, 240, 240);
+    }
+  }
+}

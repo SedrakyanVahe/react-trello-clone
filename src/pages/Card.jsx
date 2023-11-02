@@ -1,19 +1,28 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
+import { useParams } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { transformObject } from '../helpers/helpers'
-import { avatarImage } from '../assets/imagesAssets/globalImages'
-import { CardModal } from '../components/CardModal'
 import { updateCard } from '../redux/cardsSlice'
+import { getCurrentBoardUsers } from '../redux/usersSlice'
+import { CardModal } from '../components/CardModal'
 
 export const Card = ({ cardId, listId, title, description }) => {
-  const [isCardModalOpen, setCardModalOpen] = useState(false)
   const dispatch = useDispatch()
+  const { id } = useParams()
+  const [isCardModalOpen, setCardModalOpen] = useState(false)
   const lists = useSelector((state) => state.lists.currentBoardLists)
+  const users = useSelector((state) => state.users.currentBoardUsers)
   const listsObject = transformObject(lists, 'lists')
 
   const handleUpdateCard = (cardTitle, cardDesc, cardListId) => {
     dispatch(updateCard({ id: cardId, listId: cardListId, title: cardTitle, description: cardDesc }))
   }
+
+  useEffect(() => {
+    dispatch(getCurrentBoardUsers(id))
+  }, [dispatch, id])
+
+  const cardMembers = users.filter((user) => user.cardId == cardId)
 
   return (
     <>
@@ -22,9 +31,11 @@ export const Card = ({ cardId, listId, title, description }) => {
         <h6 className='card_title'>{title}</h6>
         <ol className='card_actions'>
           <ol className='card_avatars'>
-            <li className='card_avatars_item'>
-              <img src={avatarImage} alt='avatar' className='avatar_image' />
-            </li>
+            {cardMembers.map((member) => (
+              <li key={member.id} className='card_avatars_item'>
+                <img src={member.avatar} alt='avatar' className='avatar_image' />
+              </li>
+            ))}
           </ol>
         </ol>
       </li>
@@ -35,6 +46,7 @@ export const Card = ({ cardId, listId, title, description }) => {
           description={description}
           listId={listId}
           lists={listsObject}
+          cardMembers={cardMembers}
           onClose={() => setCardModalOpen(false)}
           handleUpdateCard={handleUpdateCard}
         />

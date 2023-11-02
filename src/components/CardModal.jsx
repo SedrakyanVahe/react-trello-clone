@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { Dropdown } from './Dropdown'
 
-export const CardModal = ({ title, description, listId, lists, onClose, handleUpdateCard }) => {
+export const CardModal = ({ title, description, listId, lists, cardMembers, onClose, handleUpdateCard }) => {
   const [isTitleEditing, setIsTitleEditing] = useState(false)
   const [cardTitle, setCardTitle] = useState(title)
   const [isDescEditing, setIsDescEditing] = useState(false)
@@ -100,6 +100,19 @@ export const CardModal = ({ title, description, listId, lists, onClose, handleUp
 
           <div className='modal_resource_list' style={{ padding: '1rem' }}>
             <Dropdown img='' title='Lists' resource='lists' options={Object.keys(lists)} onSelect={handleListChange} />
+          </div>
+
+          <small className='cardMembersTitle'>Members</small>
+          <div className='card_members'>
+            <ol>
+              {cardMembers.map((member) => (
+                <li key={member.id} className='card_avatars_item'>
+                  <img src={member.avatar} alt='avatar' className='avatar_image' />
+                </li>
+              ))}
+            </ol>
+
+            <button className='addMemberBtn'>+</button>
           </div>
         </div>
 

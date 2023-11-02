@@ -34,7 +34,7 @@ export const Board = () => {
   }
 
   const handleAddUser = (email) => {
-    dispatch(addUser({ id: Date.now(), boardId: id, listId: null, email: email }))
+    dispatch(addUser({ id: Date.now(), boardId: id, cardId: null, email: email }))
   }
 
   const handleSelect = (option) => {
