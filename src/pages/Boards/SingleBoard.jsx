@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
-import { useGetBoardsQuery } from '../redux/boardsSlice'
+import { useGetBoardsQuery } from '../../redux/boardsSlice'
 import { useParams } from 'react-router-dom'
-import { NotFound } from './NotFound'
+import { NotFound } from '../NotFound'
 // import { useDispatch, useSelector } from 'react-redux'
 // import { useParams } from 'react-router-dom'
 // import { showBoard } from '../redux/boardsSlice'
@@ -9,7 +9,7 @@ import { NotFound } from './NotFound'
 // import { addList, getCurrentBoardLists, updateListName } from '../redux/listsSlice'
 // import { List } from './List'
 
-export const Board = () => {
+export const SingleBoard = () => {
   // const [isModalOpen, setModalOpen] = useState(false)
   // const { id } = useParams()
   // const dispatch = useDispatch()

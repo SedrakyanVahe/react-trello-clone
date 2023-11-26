@@ -1,6 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import store from './redux/store'
+import { store } from './redux/store'
 import { BrowserRouter } from 'react-router-dom'
 import './assets/style/_index.scss'
 import { RootScreen } from './routes/root.screen'

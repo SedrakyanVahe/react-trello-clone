@@ -1,55 +1,59 @@
-import { createSlice } from '@reduxjs/toolkit'
+import { createEntityAdapter } from '@reduxjs/toolkit'
+import { apiSlice } from './apiSlice'
 
-const initialState = {
-  boardsList: [
-    {
-      id: 1,
-      title: 'board 1',
-    },
+const boardsAdapter = createEntityAdapter({})
+const initialState = boardsAdapter.getInitialState()
 
-    {
-      id: 2,
-      title: 'board 2',
-    },
+export const extendedApiSlice = apiSlice.injectEndpoints({
+  endpoints: (builder) => ({
+    getBoards: builder.query({
+      query: () => '/boards',
+      transformResponse: (responseData) => {
+        const loadedPosts = responseData
 
-    {
-      id: 3,
-      title: 'board 3',
-    },
-  ],
+        return boardsAdapter.setAll(initialState, loadedPosts)
+      },
 
-  currentBoard: null,
-}
+      providesTags: (result, error, arg) => [{ type: 'Board', id: 'LIST' }, ...result.ids.map((id) => ({ type: 'Board', id }))],
+    }),
 
-const boardsSlice = createSlice({
-  name: 'boards',
-  initialState,
-  reducers: {
-    showBoard: (state, action) => {
-      state.currentBoard = state.boardsList.find((board) => board.id == action.payload)
-    },
+    addNewBoard: builder.mutation({
+      query: (initialBoard) => ({
+        url: '/boards',
+        method: 'POST',
+        body: {
+          board: {
+            ...initialBoard,
+          },
+        },
+      }),
 
-    addBoard: (state, action) => {
-      state.boardsList.push(action.payload)
-    },
+      invalidatesTags: [{ type: 'Board', id: 'LIST' }],
+    }),
 
-    deleteBoard: (state, action) => {
-      const boardIndex = state.boardsList.findIndex((board) => board.id === action.payload)
+    updateBoard: builder.mutation({
+      query: (initialPost) => ({
+        url: `/boards/${initialPost.id}`,
+        method: 'PATCH',
+        body: {
+          board: {
+            ...initialPost,
+          },
+        },
+      }),
+      invalidatesTags: (result, error, arg) => [{ type: 'Board', id: arg.id }],
+    }),
 
-      if (boardIndex !== -1) {
-        state.boardsList.splice(boardIndex, 1)
-      }
-    },
+    deleteBoard: builder.mutation({
+      query: ({ id }) => ({
+        url: `/boards/${id}`,
+        method: 'DELETE',
+        body: { id },
+      }),
 
-    updateBoardTitle: (state, action) => {
-      const board = state.boardsList.find((board) => board.id == action.payload.id)
-
-      if (!!board.id) {
-        board.title = action.payload.title
-      }
-    },
-  },
+      invalidatesTags: (result, error, arg) => [{ type: 'Board', id: arg.id }],
+    }),
+  }),
 })
 
-export const { showBoard, addBoard, deleteBoard, updateBoardTitle } = boardsSlice.actions
-export default boardsSlice.reducer
+export const { useGetBoardsQuery, useAddNewBoardMutation, useUpdateBoardMutation, useDeleteBoardMutation } = extendedApiSlice

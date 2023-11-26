@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-export const Modal = ({ resource, onClose, onAddResource }) => {
+export const Modal = ({ resource, onClose, onAddResource, onNameChanged }) => {
   const [resourceName, setResourceName] = useState('')
 
   const handleNameChange = (e) => {
@@ -38,8 +38,8 @@ export const Modal = ({ resource, onClose, onAddResource }) => {
         </div>
         <div className='modal_content'>
           <div className='material_textfield'>
-            <input type='text' placeholder=' ' id='title' value={resourceName} onChange={handleNameChange} onKeyDown={handleKeyPress} autoFocus />
-            <label htmlFor='resource'>Title</label>
+            <input type='text' placeholder=' ' id='name' value={resourceName} onChange={handleNameChange} onKeyDown={handleKeyPress} autoFocus />
+            <label htmlFor='resource'>Name</label>
           </div>
         </div>
         <div className='modal_footer'>
