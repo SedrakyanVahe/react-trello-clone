@@ -9,9 +9,9 @@ export const extendedApiSlice = apiSlice.injectEndpoints({
     getBoards: builder.query({
       query: () => '/boards',
       transformResponse: (responseData) => {
-        const loadedPosts = responseData
+        const loadedBoards = responseData
 
-        return boardsAdapter.setAll(initialState, loadedPosts)
+        return boardsAdapter.setAll(initialState, loadedBoards)
       },
 
       providesTags: (result, error, arg) => [{ type: 'Board', id: 'LIST' }, ...result.ids.map((id) => ({ type: 'Board', id }))],
@@ -32,12 +32,12 @@ export const extendedApiSlice = apiSlice.injectEndpoints({
     }),
 
     updateBoard: builder.mutation({
-      query: (initialPost) => ({
-        url: `/boards/${initialPost.id}`,
+      query: (initialBoard) => ({
+        url: `/boards/${initialBoard.id}`,
         method: 'PATCH',
         body: {
           board: {
-            ...initialPost,
+            ...initialBoard,
           },
         },
       }),

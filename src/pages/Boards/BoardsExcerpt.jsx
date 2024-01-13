@@ -1,9 +1,13 @@
 import { Link } from 'react-router-dom'
 import { useGetBoardsQuery, useUpdateBoardMutation, useDeleteBoardMutation } from '../../redux/boardsSlice'
+import { useState } from 'react'
 
 const BoardsExcerpt = ({ boardId }) => {
-  const [updatePost, { isLoading }] = useUpdateBoardMutation()
+  const [updateBoard, { isLoading }] = useUpdateBoardMutation()
   const [deleteBoard] = useDeleteBoardMutation()
+
+  const [editingBoardId, setEditingBoardId] = useState(null)
+  const [boardName, setBoardName] = useState('')
 
   const { board } = useGetBoardsQuery('getBoards', {
     selectFromResult: ({ data }) => ({
@@ -12,23 +16,39 @@ const BoardsExcerpt = ({ boardId }) => {
   })
 
   const startEditingBoard = (boardId, name) => {
-    // setBoardName(name)
+    setEditingBoardId(boardId)
+    setBoardName(name)
   }
 
   const stopEditingBoard = () => {
-    // setBoardName('')
+    setEditingBoardId(null)
+    setBoardName('')
   }
 
   const handleNameChange = (e) => {
-    // setBoardName(e.target.value)
+    setBoardName(e.target.value)
+  }
+
+  const onUpdateBoard = async (boardId) => {
+    const canSave = boardName.trim() !== '' && !isLoading
+
+    if (canSave) {
+      try {
+        await updateBoard({ id: boardId, name: boardName }).unwrap()
+      } catch (e) {
+        console.error('Failed to save the board: ', e.data.error)
+      }
+    }
+
+    stopEditingBoard()
   }
 
   const onDeleteBoardClicked = async () => {
     if (confirm('Are you sure?')) {
       try {
         await deleteBoard({ id: board?.id }).unwrap()
-      } catch (err) {
-        console.error('Failed to delete the post', err)
+      } catch (e) {
+        console.error('Failed to delete the board: ', e.data.error)
       }
     }
   }
@@ -36,19 +56,19 @@ const BoardsExcerpt = ({ boardId }) => {
   return (
     <>
       <div key={board.id} className='board'>
-        {false ? (
+        {editingBoardId === board.id ? (
           <div className='material_textfield'>
             <input
               type='text'
               className='board_title_input'
               placeholder=' '
-              value={boardTitle}
-              onChange={handleTitleChange}
-              onBlur={() => saveBoardTitle(board.id)}
+              value={boardName}
+              onChange={handleNameChange}
+              onBlur={() => onUpdateBoard(board.id)}
               autoFocus
             />
 
-            <label htmlFor='resource'>Title</label>
+            <label htmlFor='resource'>Name</label>
           </div>
         ) : (
           <>

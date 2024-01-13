@@ -1,6 +1,6 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import BoardsList from './BoardsList'
-import { AddBoardModal } from './AddBoardForm'
+import { AddBoardForm } from './AddBoardForm'
 
 export const Boards = () => {
   const [isModalOpen, setModalOpen] = useState(false)
@@ -13,10 +13,11 @@ export const Boards = () => {
           <button className='btn' onClick={() => setModalOpen(true)}>
             Add board
           </button>
+
           <BoardsList />
         </div>
 
-        {isModalOpen && <AddBoardModal onClose={() => setModalOpen(false)} />}
+        {isModalOpen && <AddBoardForm onClose={() => setModalOpen(false)} />}
       </section>
     </>
   )

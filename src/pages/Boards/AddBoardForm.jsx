@@ -1,10 +1,9 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { useAddNewBoardMutation } from '../../redux/boardsSlice'
 
-export const AddBoardModal = ({ onClose }) => {
+export const AddBoardForm = ({ onClose }) => {
   const [name, setName] = useState('')
   const [addNewBoard, { isLoading }] = useAddNewBoardMutation()
-
   const onNameChanged = (e) => setName(e.target.value)
 
   const onSaveBoardClicked = async () => {
@@ -15,8 +14,8 @@ export const AddBoardModal = ({ onClose }) => {
         await addNewBoard({ name }).unwrap()
         setName('')
         onClose()
-      } catch (err) {
-        console.error('Failed to save the post', err)
+      } catch (e) {
+        console.error('Failed to save the board: ', e.data.error)
       }
     }
   }
@@ -38,7 +37,7 @@ export const AddBoardModal = ({ onClose }) => {
         </div>
         <div className='modal_content'>
           <div className='material_textfield'>
-            <input type='text' placeholder=' ' id='name' value={name} onChange={onNameChanged} onKeyDown={handleKeyPress} autoFocus />
+            <input type='text' placeholder=' ' id='name' value={name} onChange={onNameChanged} autoFocus />
             <label htmlFor='name'>Name</label>
           </div>
         </div>
