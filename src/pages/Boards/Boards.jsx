@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import BoardsList from './BoardsList'
+import { BoardsList } from './BoardsList'
 import { AddBoardForm } from './AddBoardForm'
 
 export const Boards = () => {

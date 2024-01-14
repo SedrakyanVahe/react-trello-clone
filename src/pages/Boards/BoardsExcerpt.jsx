@@ -2,18 +2,12 @@ import { Link } from 'react-router-dom'
 import { useGetBoardsQuery, useUpdateBoardMutation, useDeleteBoardMutation } from '../../redux/boardsSlice'
 import { useState } from 'react'
 
-const BoardsExcerpt = ({ boardId }) => {
-  const [updateBoard, { isLoading }] = useUpdateBoardMutation()
+export const BoardsExcerpt = ({ boardId }) => {
+  const { board } = useGetBoardsQuery('getBoards', { selectFromResult: ({ data }) => ({ board: data?.entities[boardId] }) })
+  const [updateBoard, { isLoading: isUpdating }] = useUpdateBoardMutation()
   const [deleteBoard] = useDeleteBoardMutation()
-
   const [editingBoardId, setEditingBoardId] = useState(null)
   const [boardName, setBoardName] = useState('')
-
-  const { board } = useGetBoardsQuery('getBoards', {
-    selectFromResult: ({ data }) => ({
-      board: data?.entities[boardId],
-    }),
-  })
 
   const startEditingBoard = (boardId, name) => {
     setEditingBoardId(boardId)
@@ -30,7 +24,7 @@ const BoardsExcerpt = ({ boardId }) => {
   }
 
   const onUpdateBoard = async (boardId) => {
-    const canSave = boardName.trim() !== '' && !isLoading
+    const canSave = boardName.trim() !== '' && !isUpdating
 
     if (canSave) {
       try {
@@ -89,5 +83,3 @@ const BoardsExcerpt = ({ boardId }) => {
     </>
   )
 }
-
-export default BoardsExcerpt

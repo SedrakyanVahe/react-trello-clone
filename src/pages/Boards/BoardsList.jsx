@@ -1,7 +1,7 @@
-import BoardsExcerpt from './BoardsExcerpt'
+import { BoardsExcerpt } from './BoardsExcerpt'
 import { useGetBoardsQuery } from '../../redux/boardsSlice'
 
-const BoardsList = () => {
+export const BoardsList = () => {
   const { data: boards, isLoading, isSuccess, isError, error } = useGetBoardsQuery('getBoards')
   let content
 
@@ -15,4 +15,3 @@ const BoardsList = () => {
 
   return <section>{content}</section>
 }
-export default BoardsList
