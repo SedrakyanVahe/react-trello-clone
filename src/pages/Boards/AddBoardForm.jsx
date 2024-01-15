@@ -13,11 +13,12 @@ export const AddBoardForm = ({ onClose }) => {
       try {
         await addNewBoard({ name }).unwrap()
         setName('')
-        onClose()
       } catch (e) {
         console.error('Failed to save the board: ', e.data.error)
       }
     }
+
+    onClose()
   }
 
   const handleOverlayClick = (e) => {
@@ -27,26 +28,28 @@ export const AddBoardForm = ({ onClose }) => {
   }
 
   return (
-    <div className='modal_overlay' onClick={handleOverlayClick}>
-      <div className='modal'>
-        <div className='modal_header'>
-          <h2>Add a new board</h2>
-          <button className='close_button' onClick={onClose}>
-            &times;
-          </button>
-        </div>
-        <div className='modal_content'>
-          <div className='material_textfield'>
-            <input type='text' placeholder=' ' id='name' value={name} onChange={onNameChanged} autoFocus />
-            <label htmlFor='name'>Name</label>
+    <form>
+      <div className='modal_overlay' onClick={handleOverlayClick}>
+        <div className='modal'>
+          <div className='modal_header'>
+            <h2>Add a new board</h2>
+            <button className='close_button' onClick={onClose}>
+              &times;
+            </button>
+          </div>
+          <div className='modal_content'>
+            <div className='material_textfield'>
+              <input type='text' placeholder=' ' id='name' value={name} onChange={onNameChanged} autoFocus />
+              <label htmlFor='name'>Name</label>
+            </div>
+          </div>
+          <div className='modal_footer'>
+            <button className='btn' onClick={onSaveClicked}>
+              Save
+            </button>
           </div>
         </div>
-        <div className='modal_footer'>
-          <button className='btn' onClick={onSaveClicked}>
-            Save
-          </button>
-        </div>
       </div>
-    </div>
+    </form>
   )
 }

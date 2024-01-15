@@ -1,8 +1,9 @@
 import { useState } from 'react'
-import { Modal } from '../../components/Modal'
 import { useGetBoardListsQuery, useUpdateBoardListMutation, useDeleteBoardListMutation } from '../../redux/boardListsSlice'
 import { Dropdown } from '../../components/Dropdown'
 import { threeDots } from '../../assets/imagesAssets/globalImages'
+import { ListTasksList } from '../ListTasks/ListTasksList'
+import { AddListTaskForm } from '../ListTasks/AddListTaskForm'
 
 export const BoardListsExcerpt = ({ boardId, boardListId }) => {
   const { data: boardLists } = useGetBoardListsQuery({ boardId })
@@ -14,18 +15,12 @@ export const BoardListsExcerpt = ({ boardId, boardListId }) => {
   const [isModalOpen, setModalOpen] = useState(false)
   const options = { Remove: 'deleteList', Edit: 'editList' }
 
-
-  const handleTitleClick = () => {
+  const handleNameClick = () => {
     setIsEditing(true)
   }
 
   const handleNameChange = (e) => {
     setBoardListName(e.target.value)
-  }
-
-  const handleAddCard = (cardTitle) => {
-    alert(cardTitle)
-    // dispatch(addCard({ id: Date.now(), listId: listId, boardListName: cardTitle }))
   }
 
   const handleSelect = (option) => {
@@ -35,7 +30,6 @@ export const BoardListsExcerpt = ({ boardId, boardListId }) => {
       onDeleteBoardListClicked()
     }
   }
-
 
   const onUpdateBoardList = async () => {
     const canSave = newBoardListName.trim() !== '' && !isUpdating
@@ -50,7 +44,6 @@ export const BoardListsExcerpt = ({ boardId, boardListId }) => {
 
     setIsEditing(false)
   }
-
 
   const onDeleteBoardListClicked = async () => {
     if (confirm('Are you sure?')) {
@@ -68,11 +61,18 @@ export const BoardListsExcerpt = ({ boardId, boardListId }) => {
         <div className='list_header'>
           {isEditing ? (
             <div className='material_textfield'>
-              <input type='text' className='list_title_input' value={newBoardListName} onChange={handleNameChange} onBlur={() => onUpdateBoardList()} autoFocus />
+              <input
+                type='text'
+                className='list_title_input'
+                value={newBoardListName}
+                onChange={handleNameChange}
+                onBlur={() => onUpdateBoardList()}
+                autoFocus
+              />
               <label htmlFor='resource'>Name</label>
             </div>
           ) : (
-            <h3 className='list_title' onClick={handleTitleClick}>
+            <h3 className='list_title' onClick={handleNameClick}>
               {newBoardListName}
             </h3>
           )}
@@ -81,17 +81,14 @@ export const BoardListsExcerpt = ({ boardId, boardListId }) => {
         </div>
 
         <ul className='list_items'>
-          {/* {cards.map((card) => (
-            <Card key={card.id} listId={card.listId} cardId={card.id} boardListName={card.boardListName} description={card.description} />
-          ))} */}
-
-          CARDS
+          <ListTasksList boardId={boardId} boardListId={boardListId} />
         </ul>
 
         <button className='add_card_btn' onClick={() => setModalOpen(true)}>
           Add a card
         </button>
-        {isModalOpen && <Modal resource={'List'} onClose={() => setModalOpen(false)} onAddResource={handleAddCard} />}
+
+        {isModalOpen && <AddListTaskForm boardId={boardId} boardListId={boardListId} onClose={() => setModalOpen(false)} />}
       </div>
     </>
   )

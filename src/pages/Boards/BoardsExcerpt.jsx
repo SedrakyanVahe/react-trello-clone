@@ -1,6 +1,6 @@
+import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { useGetBoardsQuery, useUpdateBoardMutation, useDeleteBoardMutation } from '../../redux/boardsSlice'
-import { useState } from 'react'
 
 export const BoardsExcerpt = ({ boardId }) => {
   const { board } = useGetBoardsQuery('getBoards', { selectFromResult: ({ data }) => ({ board: data?.entities[boardId] }) })
