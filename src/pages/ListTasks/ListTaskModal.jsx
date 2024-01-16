@@ -1,15 +1,10 @@
 import { useState } from 'react'
-import { Dropdown } from '../../components/Dropdown'
 
 export const ListTaskModal = ({ name, description, onClose, handleUpdateListTask }) => {
   const [isNameEditing, setIsNameEditing] = useState(false)
   const [isDescriptionEditing, setIsDescriptionEditing] = useState(false)
   const [listTaskName, setListTaskName] = useState(name)
   const [listTaskDescription, setListTaskDescription] = useState(description)
-  // const [currentBoardListId, setCurrentBoardListId] = useState(boardListId)
-
-  // GET FROM STATE
-  const lists = []
 
   const handleNameClick = () => {
     setIsNameEditing(true)
@@ -35,11 +30,6 @@ export const ListTaskModal = ({ name, description, onClose, handleUpdateListTask
   const handleDescriptionChange = (e) => {
     setListTaskDescription(e.target.value)
     console.log(listTaskDescription)
-  }
-
-  const handleListChange = (option) => {
-    const listId = lists[option]
-    // setCurrentBoardListId(listId)
   }
 
   const onSaveClick = () => {
@@ -103,10 +93,6 @@ export const ListTaskModal = ({ name, description, onClose, handleUpdateListTask
                 {!!listTaskDescription ? listTaskDescription : 'Add a more detailed description...'}
               </p>
             )}
-
-            <div className='modal_resource_list' style={{ padding: '1rem' }}>
-              <Dropdown img='' title='Lists' options={Object.keys(lists)} onSelect={handleListChange} />
-            </div>
           </div>
 
           <div className='modal_footer'>

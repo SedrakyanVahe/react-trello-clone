@@ -8,7 +8,9 @@ export const ListTasksList = ({ boardId, boardListId }) => {
   if (isLoading) {
     content = <p>Loading...</p>
   } else if (isSuccess) {
-    content = listTasks.ids.map((listTaskId) => <ListTasksExcerpt key={listTaskId} boardId={boardId} boardListId={boardListId} listTaskId={listTaskId} />)
+    content = listTasks.ids.map((listTaskId) => (
+      <ListTasksExcerpt key={listTaskId} boardId={boardId} boardListId={boardListId} listTaskId={listTaskId} listTasks={listTasks} />
+    ))
   } else if (isError) {
     content = <p>ERROR: {error}</p>
   }

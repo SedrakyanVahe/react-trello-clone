@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react'
+import { useState, useEffect, useRef } from 'react'
 
 export const Dropdown = ({ img, title, options, onSelect }) => {
   const [isOpen, setIsOpen] = useState(false)

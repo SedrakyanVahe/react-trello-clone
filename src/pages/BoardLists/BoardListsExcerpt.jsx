@@ -1,12 +1,11 @@
 import { useState } from 'react'
-import { useGetBoardListsQuery, useUpdateBoardListMutation, useDeleteBoardListMutation } from '../../redux/boardListsSlice'
+import { useUpdateBoardListMutation, useDeleteBoardListMutation } from '../../redux/boardListsSlice'
 import { Dropdown } from '../../components/Dropdown'
 import { threeDots } from '../../assets/imagesAssets/globalImages'
 import { ListTasksList } from '../ListTasks/ListTasksList'
 import { AddListTaskForm } from '../ListTasks/AddListTaskForm'
 
-export const BoardListsExcerpt = ({ boardId, boardListId }) => {
-  const { data: boardLists } = useGetBoardListsQuery({ boardId })
+export const BoardListsExcerpt = ({ boardId, boardListId, boardLists }) => {
   const boardList = boardLists.entities[boardListId]
   const [updateBoardList, { isLoading: isUpdating }] = useUpdateBoardListMutation()
   const [deleteBoardList] = useDeleteBoardListMutation()

@@ -1,10 +1,9 @@
 import { useState } from 'react'
-import { useGetListTasksQuery, useUpdateListTaskMutation } from '../../redux/listTasksSlice'
+import { useUpdateListTaskMutation } from '../../redux/listTasksSlice'
 import { avatarImage } from '../../assets/imagesAssets/globalImages'
 import { ListTaskModal } from './ListTaskModal'
 
-export const ListTasksExcerpt = ({ boardId, boardListId, listTaskId }) => {
-  const { data: listTasks } = useGetListTasksQuery({ boardId, boardListId })
+export const ListTasksExcerpt = ({ boardId, boardListId, listTaskId, listTasks }) => {
   const listTask = listTasks.entities[listTaskId]
   const [updateListTask, { isLoading: isUpdating }] = useUpdateListTaskMutation()
   const [isListTaskModalOpen, setListTaskModalOpen] = useState(false)
@@ -41,7 +40,6 @@ export const ListTasksExcerpt = ({ boardId, boardListId, listTaskId }) => {
         <ListTaskModal
           name={listTask?.name}
           description={listTask?.description}
-          boardListId={boardListId}
           onClose={() => setListTaskModalOpen(false)}
           handleUpdateListTask={handleUpdateListTask}
         />

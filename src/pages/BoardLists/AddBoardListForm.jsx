@@ -6,7 +6,8 @@ export const AddBoardListForm = ({ boardId, onClose }) => {
   const [addNewBoardList, { isLoading }] = useAddNewBoardListMutation()
   const onNameChanged = (e) => setName(e.target.value)
 
-  const onSaveClicked = async () => {
+  const onSaveClicked = async (e) => {
+    e.preventDefault()
     const canSave = [name].every(Boolean) && !isLoading
 
     if (canSave) {
