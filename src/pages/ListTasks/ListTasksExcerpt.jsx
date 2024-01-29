@@ -3,7 +3,7 @@ import { useUpdateListTaskMutation } from '../../redux/listTasksSlice'
 import { avatarImage } from '../../assets/imagesAssets/globalImages'
 import { ListTaskModal } from './ListTaskModal'
 
-export const ListTasksExcerpt = ({ boardId, boardListId, listTaskId, listTasks }) => {
+export const ListTasksExcerpt = ({ boardId, boardListId, listTaskId, listTasks, boardLists }) => {
   const listTask = listTasks.entities[listTaskId]
   const [updateListTask, { isLoading: isUpdating }] = useUpdateListTaskMutation()
   const [isListTaskModalOpen, setListTaskModalOpen] = useState(false)
@@ -42,6 +42,10 @@ export const ListTasksExcerpt = ({ boardId, boardListId, listTaskId, listTasks }
           description={listTask?.description}
           onClose={() => setListTaskModalOpen(false)}
           handleUpdateListTask={handleUpdateListTask}
+          boardLists={boardLists}
+          boardId={boardId}
+          boardListId={boardListId}
+          listTaskId={listTask?.id}
         />
       )}
     </>

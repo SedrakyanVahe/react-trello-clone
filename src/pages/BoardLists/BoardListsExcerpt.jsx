@@ -80,7 +80,7 @@ export const BoardListsExcerpt = ({ boardId, boardListId, boardLists }) => {
         </div>
 
         <ul className='list_items'>
-          <ListTasksList boardId={boardId} boardListId={boardListId} />
+          <ListTasksList boardId={boardId} boardListId={boardListId} boardLists={boardLists} />
         </ul>
 
         <button className='add_card_btn' onClick={() => setModalOpen(true)}>

@@ -63,7 +63,7 @@ export const List = ({ listId, title, onUpdateListName }) => {
         </div>
 
         <ul className='list_items'>
-          {cards.map((card) => (
+          {cards?.map((card) => (
             <Card key={card.id} listId={card.listId} cardId={card.id} title={card.title} description={card.description} />
           ))}
         </ul>

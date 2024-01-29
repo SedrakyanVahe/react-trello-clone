@@ -8,7 +8,7 @@ export const BoardsList = () => {
   if (isLoading) {
     content = <p>Loading...</p>
   } else if (isSuccess) {
-    content = boards.ids.map((boardId) => <BoardsExcerpt key={boardId} boardId={boardId} />)
+    content = boards?.ids?.map((boardId) => <BoardsExcerpt key={boardId} boardId={boardId} />)
   } else if (isError) {
     content = <p>ERROR: {error}</p>
   }

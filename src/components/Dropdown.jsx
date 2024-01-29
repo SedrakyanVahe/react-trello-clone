@@ -4,7 +4,8 @@ export const Dropdown = ({ img, title, options, onSelect }) => {
   const [isOpen, setIsOpen] = useState(false)
   const dropdownRef = useRef(null)
 
-  const toggleDropdown = () => {
+  const toggleDropdown = (e) => {
+    e.preventDefault()
     setIsOpen(!isOpen)
   }
 
@@ -13,8 +14,8 @@ export const Dropdown = ({ img, title, options, onSelect }) => {
     toggleDropdown()
   }
 
-  const handleOverlayClick = (event) => {
-    if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+  const handleOverlayClick = (e) => {
+    if (dropdownRef.current && !dropdownRef.current.contains(e.target)) {
       setIsOpen(false)
     }
   }
@@ -37,7 +38,7 @@ export const Dropdown = ({ img, title, options, onSelect }) => {
         <ul className='dropdown_options'>
           {options.map((option, index) => (
             <li key={index} onClick={() => handleOptionClick(option)}>
-              {option}
+              {option?.name || option}
             </li>
           ))}
         </ul>

@@ -19,18 +19,6 @@ export const extendedApiSlice = apiSlice.injectEndpoints({
       providesTags: (result, error, arg) => [{ type: 'ListTask', id: 'LIST' }, ...result.ids.map((id) => ({ type: 'ListTask', id }))],
     }),
 
-    // TODO
-    // getListTaskById: builder.query({
-    //   query: ({ boardId, boardListId, id }) => `/boards/${boardId}/board_lists/${boardListId}/list_tasks/${id}`,
-    //   transformResponse: (responseData) => {
-    //     const loadedBoardLists = responseData
-
-    //     return listTasksAdapter.setAll(initialState, loadedBoardLists)
-    //   },
-
-    //   providesTags: (result, error, id) => [{ type: 'ListTask', id }],
-    // }),
-
     addNewListTask: builder.mutation({
       query: (initialListTask) => ({
         url: `/boards/${initialListTask.boardId}/board_lists/${initialListTask.boardListId}/list_tasks`,

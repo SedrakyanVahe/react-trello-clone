@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { Dropdown } from './Dropdown'
 
 export const CardModal = ({ title, description, listId, lists, onClose, handleUpdateCard }) => {

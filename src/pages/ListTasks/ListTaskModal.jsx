@@ -1,10 +1,14 @@
 import { useState } from 'react'
+import { Dropdown } from '../../components/Dropdown'
+import { useUpdateListTaskMutation } from '../../redux/listTasksSlice'
 
-export const ListTaskModal = ({ name, description, onClose, handleUpdateListTask }) => {
+export const ListTaskModal = ({ name, description, onClose, handleUpdateListTask, boardLists, boardId, boardListId, listTaskId }) => {
   const [isNameEditing, setIsNameEditing] = useState(false)
   const [isDescriptionEditing, setIsDescriptionEditing] = useState(false)
   const [listTaskName, setListTaskName] = useState(name)
   const [listTaskDescription, setListTaskDescription] = useState(description)
+  const [updateListTask, { isLoading: isUpdating }] = useUpdateListTaskMutation()
+  const transformedBoardLists = Object.values(boardLists.entities).map(({ id, name, board_id }) => ({ id, name, board_id }))
 
   const handleNameClick = () => {
     setIsNameEditing(true)
@@ -40,6 +44,14 @@ export const ListTaskModal = ({ name, description, onClose, handleUpdateListTask
   const handleOverlayClick = (e) => {
     if (e.target === e.currentTarget) {
       onClose()
+    }
+  }
+
+  const handleListBoardChange = async (option) => {
+    try {
+      await updateListTask({ boardId: boardId, boardListId: boardListId, id: listTaskId, data: { board_list_id: option.id } }).unwrap()
+    } catch (e) {
+      console.error('Failed to save the board: ', e.data.error)
     }
   }
 
@@ -93,6 +105,10 @@ export const ListTaskModal = ({ name, description, onClose, handleUpdateListTask
                 {!!listTaskDescription ? listTaskDescription : 'Add a more detailed description...'}
               </p>
             )}
+
+            <div className='modal_resource_list' style={{ padding: '1rem' }}>
+              <Dropdown img='' title='Lists' options={transformedBoardLists} onSelect={handleListBoardChange} />
+            </div>
           </div>
 
           <div className='modal_footer'>
