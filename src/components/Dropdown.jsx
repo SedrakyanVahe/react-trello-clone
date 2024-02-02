@@ -4,8 +4,7 @@ export const Dropdown = ({ img, title, options, onSelect }) => {
   const [isOpen, setIsOpen] = useState(false)
   const dropdownRef = useRef(null)
 
-  const toggleDropdown = (e) => {
-    e.preventDefault()
+  const toggleDropdown = () => {
     setIsOpen(!isOpen)
   }
 
@@ -30,7 +29,7 @@ export const Dropdown = ({ img, title, options, onSelect }) => {
 
   return (
     <div ref={dropdownRef} className='dropdown'>
-      <button onClick={toggleDropdown}>
+      <button onClick={toggleDropdown} type='button'>
         {img && <img className='three_dots' src={img} />}
         {title && <strong style={{ border: '1px solid black', padding: '5px' }}>{title}...</strong>}
       </button>

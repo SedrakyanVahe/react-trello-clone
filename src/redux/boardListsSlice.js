@@ -1,4 +1,4 @@
-import { createEntityAdapter } from '@reduxjs/toolkit'
+import { createEntityAdapter, createSelector } from '@reduxjs/toolkit'
 import { apiSlice } from './apiSlice'
 
 const boardListsAdapter = createEntityAdapter({})
@@ -14,10 +14,7 @@ export const extendedApiSlice = apiSlice.injectEndpoints({
         return boardListsAdapter.setAll(initialState, loadedBoardLists)
       },
 
-      providesTags: (result, error, arg) => [
-        { type: 'BoardList', id: 'LIST' },
-        ...result.ids.map((id) => ({ type: 'BoardList', id })),
-      ],
+      providesTags: (result, error, arg) => [{ type: 'BoardList', id: 'LIST' }, ...result.ids.map((id) => ({ type: 'BoardList', id }))],
     }),
 
     addNewBoardList: builder.mutation({
@@ -60,9 +57,4 @@ export const extendedApiSlice = apiSlice.injectEndpoints({
   }),
 })
 
-export const {
-  useGetBoardListsQuery,
-  useAddNewBoardListMutation,
-  useUpdateBoardListMutation,
-  useDeleteBoardListMutation,
-} = extendedApiSlice
+export const { useGetBoardListsQuery, useAddNewBoardListMutation, useUpdateBoardListMutation, useDeleteBoardListMutation } = extendedApiSlice

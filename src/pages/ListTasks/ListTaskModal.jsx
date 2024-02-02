@@ -8,7 +8,7 @@ export const ListTaskModal = ({ name, description, onClose, handleUpdateListTask
   const [listTaskName, setListTaskName] = useState(name)
   const [listTaskDescription, setListTaskDescription] = useState(description)
   const [updateListTask, { isLoading: isUpdating }] = useUpdateListTaskMutation()
-  const transformedBoardLists = Object.values(boardLists.entities).map(({ id, name, board_id }) => ({ id, name, board_id }))
+  const transformedBoardLists = Object.values(boardLists?.entities)?.map(({ id, name, board_id }) => ({ id, name, board_id }))
 
   const handleNameClick = () => {
     setIsNameEditing(true)
