@@ -1,8 +1,6 @@
 import { createEntityAdapter } from '@reduxjs/toolkit'
 import { apiSlice } from './apiSlice'
 
-// /boards/{board_id}/board_lists/{board_list_id}/list_tasks
-
 const listTasksAdapter = createEntityAdapter({})
 const initialState = listTasksAdapter.getInitialState()
 

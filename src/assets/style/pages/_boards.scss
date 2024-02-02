@@ -21,11 +21,16 @@
   color: #333;
 }
 
-.board_content_title {
-  font-size: 20px;
+.board_content_container_header {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid black;
   margin-bottom: 20px;
   padding: 12px;
-  border-bottom: 1px solid black;
+}
+
+.board_content_title {
+  font-size: 20px;
 }
 
 .board_actions {

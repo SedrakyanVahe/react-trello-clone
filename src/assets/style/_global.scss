@@ -75,6 +75,14 @@ textarea {
   }
 }
 
+.btn_green {
+  background-color: $color-green;
+
+  &:hover {
+    background-color: green;
+  }
+}
+
 .site {
   text-align: center;
 }
