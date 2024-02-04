@@ -27,6 +27,11 @@
   border-bottom: 1px solid black;
   margin-bottom: 20px;
   padding: 12px;
+
+  .right {
+    display: flex;
+    gap: 5px;
+  }
 }
 
 .board_content_title {

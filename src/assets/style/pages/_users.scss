@@ -1,30 +1,28 @@
-$color: #555;
-$main-background: #5b9eed;
-$white: #fff;
-$white-two: #aaa;
-
-.users_list_wrapper {
-  max-width: 400px;
-  margin: 50px auto;
-  background-color: red !important;
+.users_modal {
+  width: 700px !important;
 }
 
 .users_list {
-  background: $white;
-  border-radius: 2px;
+  border-radius: 5px;
   list-style: none;
-  padding: 10px 20px;
 }
 
 .users_list_item {
   display: flex;
+  justify-content: space-between;
+  align-items: center;
   margin: 10px;
-  padding-bottom: 5px;
-  padding-top: 5px;
+  padding: 5px 0;
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 
   &:last-child {
     border-bottom: none;
+  }
+
+  &_content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 
   &_image {
@@ -32,19 +30,55 @@ $white-two: #aaa;
     width: 64px;
   }
 
-  &_content {
+  &_first_letter {
+    border-radius: 50%;
+    width: 64px;
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &_email {
     margin-left: 20px;
-    h4,
-    p {
-      margin: 0;
+    font-size: 18px;
+  }
+
+  &_checkbox {
+    input[type='checkbox'] {
+      display: none;
     }
-    h4 {
-      margin-top: 10px;
-      font-size: 18px;
+
+    input[type='checkbox']:checked + label {
+      background-color: black;
     }
-    p {
-      margin-top: 5px;
-      color: $white-two;
+
+    label {
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      border-radius: 5px;
+      background-color: #ccc;
+      border: 1px solid rgb(179, 179, 179);
+      cursor: pointer;
+      height: 1.2rem;
+      width: 1.2rem;
+      transition: 100ms ease-in;
     }
+  }
+}
+
+.board_users_list {
+  display: flex;
+  gap: 5px;
+
+  h4 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background-color: rgb(206 206 206);
+    width: 40px;
+    height: 40px;
   }
 }
