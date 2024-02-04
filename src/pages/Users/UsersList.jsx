@@ -49,8 +49,7 @@ export default function UsersList() {
                 <h4 className='users_list_item_email'>{user.email}</h4>
               </div>
 
-
-              <button type='button' className='btn btn_blue' onClick={e => onAddUserBtnClicked(e, user.id)}>Add to card</button>
+              <button type='button' className='btn btn_blue' onClick={e => onAddUserBtnClicked(e, user.id)}>Add to board</button>
             </li>
           ))}
         </ul>
