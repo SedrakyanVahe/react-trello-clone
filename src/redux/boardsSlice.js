@@ -14,10 +14,7 @@ export const extendedApiSlice = apiSlice.injectEndpoints({
         return boardsAdapter.setAll(initialState, loadedBoards)
       },
 
-      providesTags: (result, error, arg) => [
-        { type: 'Board', id: 'LIST' },
-        ...result.ids.map((id) => ({ type: 'Board', id })),
-      ],
+      providesTags: (result, error, arg) => [{ type: 'Board', id: 'LIST' }, ...result.ids.map((id) => ({ type: 'Board', id }))],
     }),
 
     addNewBoard: builder.mutation({
@@ -60,14 +57,11 @@ export const extendedApiSlice = apiSlice.injectEndpoints({
     getBoardUsers: builder.query({
       query: ({ boardId }) => `/boards/${boardId}/users`,
       transformResponse: (responseData) => {
-        const loadedBoardLists = responseData
-        return boardsAdapter.setAll(initialState, loadedBoardLists)
+        const loadedBoardUsers = responseData
+        return boardsAdapter.setAll(initialState, loadedBoardUsers)
       },
 
-      providesTags: (result, error, arg) => [
-        { type: 'Board', id: 'LIST' },
-        ...result.ids.map((id) => ({ type: 'Board', id })),
-      ],
+      providesTags: (result, error, arg) => [{ type: 'Board', id: 'LIST' }, ...result.ids.map((id) => ({ type: 'Board', id }))],
     }),
 
     assignUser: builder.mutation({
@@ -84,11 +78,5 @@ export const extendedApiSlice = apiSlice.injectEndpoints({
   }),
 })
 
-export const {
-  useGetBoardsQuery,
-  useAddNewBoardMutation,
-  useUpdateBoardMutation,
-  useDeleteBoardMutation,
-  useGetBoardUsersQuery,
-  useAssignUserMutation,
-} = extendedApiSlice
+export const { useGetBoardsQuery, useAddNewBoardMutation, useUpdateBoardMutation, useDeleteBoardMutation, useGetBoardUsersQuery, useAssignUserMutation } =
+  extendedApiSlice

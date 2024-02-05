@@ -54,8 +54,36 @@ export const extendedApiSlice = apiSlice.injectEndpoints({
 
       invalidatesTags: (result, error, arg) => [{ type: 'ListTask', id: arg.id }],
     }),
+
+    getListTaskUsers: builder.query({
+      query: ({ boardId, boardListId, listTaskId }) => `/boards/${boardId}/board_lists/${boardListId}/list_tasks/${listTaskId}/users`,
+      transformResponse: (responseData) => {
+        const loadedListTaskUsers = responseData
+        return listTasksAdapter.setAll(initialState, loadedListTaskUsers)
+      },
+
+      providesTags: (result, error, arg) => [{ type: 'Board', id: 'LIST' }, ...result.ids.map((id) => ({ type: 'ListTask', id }))],
+    }),
+
+    assignUserToListTask: builder.mutation({
+      query: ({ boardId, boardListId, listTaskId, userId }) => ({
+        url: `/boards/${boardId}/board_lists/${boardListId}/list_tasks/${listTaskId}/assign_user`,
+        method: 'POST',
+        body: {
+          task_user: { user_id: userId },
+        },
+      }),
+
+      invalidatesTags: [{ type: 'ListTask', id: 'LIST' }],
+    }),
   }),
 })
 
-export const { useGetListTasksQuery, useGetListTaskByIdQuery, useAddNewListTaskMutation, useUpdateListTaskMutation, useDeleteBoardListMutation } =
-  extendedApiSlice
+export const {
+  useGetListTasksQuery,
+  useAddNewListTaskMutation,
+  useUpdateListTaskMutation,
+  useDeleteBoardListMutation,
+  useGetListTaskUsersQuery,
+  useAssignUserToListTaskMutation,
+} = extendedApiSlice

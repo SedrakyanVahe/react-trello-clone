@@ -1,5 +1,5 @@
-import { useState } from 'react'
-import { useUpdateListTaskMutation } from '../../redux/listTasksSlice'
+import { useEffect, useState } from 'react'
+import { useGetListTaskUsersQuery, useUpdateListTaskMutation } from '../../redux/listTasksSlice'
 import { avatarImage } from '../../assets/imagesAssets/globalImages'
 import { ListTaskModal } from './ListTaskModal'
 
@@ -7,6 +7,20 @@ export const ListTasksExcerpt = ({ boardId, boardListId, listTaskId, listTasks, 
   const listTask = listTasks.entities[listTaskId]
   const [updateListTask, { isLoading: isUpdating }] = useUpdateListTaskMutation()
   const [isListTaskModalOpen, setListTaskModalOpen] = useState(false)
+
+  const { data: listTaskUsersObject } = useGetListTaskUsersQuery({ boardId, boardListId, listTaskId })
+  let listTaskUsersList = []
+  const [listTaskUsers, setListTaskUsers] = useState(listTaskUsersList)
+
+  useEffect(() => {
+    if (listTaskUsersObject) {
+      const listTaskUsers = Object.keys(listTaskUsersObject.entities).map((key) => ({
+        ...listTaskUsersObject.entities[key],
+      }))
+
+      setListTaskUsers(listTaskUsers)
+    }
+  }, [listTaskUsersObject])
 
   const handleUpdateListTask = async (listTaskName, listTaskDescription) => {
     try {
@@ -28,10 +42,12 @@ export const ListTasksExcerpt = ({ boardId, boardListId, listTaskId, listTasks, 
         <h6 className='card_title'>{listTask?.name}</h6>
         <ol className='card_actions'>
           {listTask?.description && <span className='bold'>...</span>}
-          <ol className='card_avatars'>
-            <li className='card_avatars_item'>
-              <img src={avatarImage} alt='avatar' className='avatar_image' />
-            </li>
+          <ol className='card_users'>
+            {listTaskUsers?.map((user) => (
+              <li key={user.id} className='card_users_item'>
+                {user.avatar ? <img src={user.avatar} alt='avatar' className='avatar_image' /> : <h4 key={user.id}>{user.full_name[0]}</h4>}
+              </li>
+            ))}
           </ol>
         </ol>
       </li>
@@ -46,6 +62,7 @@ export const ListTasksExcerpt = ({ boardId, boardListId, listTaskId, listTasks, 
           boardId={boardId}
           boardListId={boardListId}
           listTaskId={listTask?.id}
+          listTaskUsers={listTaskUsers}
         />
       )}
     </>

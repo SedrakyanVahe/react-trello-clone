@@ -1,8 +1,9 @@
 import { useState } from 'react'
 import { Dropdown } from '../../components/Dropdown'
 import { useUpdateListTaskMutation } from '../../redux/listTasksSlice'
+import { ListTaskUsersPopUp } from './ListTaskUsersPopUp'
 
-export const ListTaskModal = ({ name, description, onClose, handleUpdateListTask, boardLists, boardId, boardListId, listTaskId }) => {
+export const ListTaskModal = ({ name, description, onClose, handleUpdateListTask, boardLists, boardId, boardListId, listTaskId, listTaskUsers }) => {
   const [isNameEditing, setIsNameEditing] = useState(false)
   const [isDescriptionEditing, setIsDescriptionEditing] = useState(false)
   const [listTaskName, setListTaskName] = useState(name)
@@ -109,6 +110,8 @@ export const ListTaskModal = ({ name, description, onClose, handleUpdateListTask
             <div className='modal_resource_list' style={{ padding: '1rem' }}>
               <Dropdown img='' title='Lists' options={transformedBoardLists} onSelect={handleListBoardChange} />
             </div>
+
+            <ListTaskUsersPopUp cardUsersList={listTaskUsers} boardListId={boardListId} listTaskId={listTaskId} />
           </div>
 
           <div className='modal_footer'>

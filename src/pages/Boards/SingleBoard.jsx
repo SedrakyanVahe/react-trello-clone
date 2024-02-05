@@ -16,8 +16,8 @@ export const SingleBoard = () => {
 
   useEffect(() => {
     if (boardUsersObject) {
-      const boardUsersList = Object.keys(boardUsersObject.entities).map(key => ({
-        ...boardUsersObject.entities[key]
+      const boardUsersList = Object.keys(boardUsersObject.entities).map((key) => ({
+        ...boardUsersObject.entities[key],
       }))
 
       setBoardUsers(boardUsersList)
@@ -46,9 +46,9 @@ export const SingleBoard = () => {
 
             <div className='right'>
               <div className='board_users_list'>
-                {
-                  boardUsers.map(user => <h4 key={user.id}>{user.full_name[0]}</h4>)
-                }
+                {boardUsers?.map((user) => (
+                  <h4 key={user.id}>{user.full_name[0]}</h4>
+                ))}
               </div>
               <button className='btn btn_green' onClick={() => setAddUserModalOpen(true)}>
                 + Share
