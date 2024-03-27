@@ -17,7 +17,7 @@ export const Boards = () => {
           <BoardsList />
         </div>
 
-        {isModalOpen && <AddBoardForm onClose={() => setModalOpen(false)} />}
+        {isModalOpen && <AddBoardForm isModalOpen={isModalOpen}  onClose={() => setModalOpen(false)} />}
       </section>
     </>
   )
